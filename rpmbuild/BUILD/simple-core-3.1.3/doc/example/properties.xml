@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE properties SYSTEM "http://www.simpleframework.org/dtd/properties.dtd">
+<properties>
+
+   <entry name="property.1" value="text"/>
+   <entry name="property.2" value="text"/>
+   <entry name="property.3" value="text"/>
+
+</properties>

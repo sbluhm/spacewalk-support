@@ -1,0 +1,496 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings FATAL => 'all';
+
+use Spacewalk::Setup ();
+use IPC::Open3 ();
+use PXT::Config;
+
+my $SCHEMA_UPGRADE_DIR = '/etc/sysconfig/rhn/schema-upgrade';
+my $SCHEMA_UPGRADE_LOGDIR = '/var/log/spacewalk/schema-upgrade';
+
+my $config_file = Spacewalk::Setup::DEFAULT_RHN_CONF_LOCATION;
+
+if (not -e $config_file) {
+        die "The config file [$config_file] does not seem to exist. Was Spacewalk configured yet?\n";
+}
+
+my %options;
+Spacewalk::Setup::read_config($config_file, \%options);
+if (not defined $options{db_backend}) {
+        die "Config file [$config_file] does not seem to have database backend info (db_backend) set.\n";
+}
+
+$ENV{NLS_LANG} = 'AMERICAN_AMERICA.UTF8';
+$ENV{NLS_NUMERIC_CHARACTERS} = '.';
+
+my $test = run_query("select '1' || '2' || '3' as testing from dual;");
+if (not defined $test) {
+        die "Connect to database was not successful.\n";
+}
+if ($test ne '123') {
+        die "Test select from database did not give expected results.\n";
+}
+
+my $schema_version = run_query(<<EOF);
+        select rhnPackageName.name || '-' || (PE.evr).version || '-' || (PE.evr).release
+        from rhnVersionInfo, rhnPackageName, rhnPackageEVR PE
+        where rhnVersionInfo.label = 'schema'
+                and rhnVersionInfo.name_id = rhnPackageName.id
+                and rhnVersionInfo.evr_id = PE.id;
+EOF
+if (not defined $schema_version) {
+        die "No existing schema version info found in rhnVersionInfo.\n";
+}
+if (not $schema_version =~ /^rhn-satellite-schema-|^spacewalk-schema-|^satellite-schema-/) {
+        die "Unknown schema name [$schema_version] found.\n";
+}
+
+my $start_schema = $schema_version;
+(my $start_schema_norm = $start_schema) =~ s!^(.+-\d+(\.\d+)*)(\..*)*$!$1!;
+
+my $my_schema_version_out = `rpm -qf --qf '%{name} %{version} %{release}\n' /etc/sysconfig/rhn/oracle/schema-override 2> /dev/null`;
+if ($?) { # the directory does not exists or is not owned by any rpm
+        $my_schema_version_out = `rpm -qf --qf '%{name} %{version} %{release}\n' /etc/sysconfig/rhn/oracle/main.sql`;
+}
+my ($my_schema_name, $my_schema_version, $my_schema_release) = ($my_schema_version_out =~ /^(\S+)\s(\S+)\s(\S+)$/);
+if (not defined $my_schema_release) {
+        die "Failed to retrieve our schema package name and version.\n";
+}
+
+my $target_schema = join '-', $my_schema_name, $my_schema_version, $my_schema_release;
+(my $target_schema_norm = $target_schema) =~ s!^(.+-\d+(\.\d+)*)(\..*)*$!$1!;
+
+print "\nPlease make sure all ".PXT::Config->get('product_name')." services apart from database are stopped.\n";
+
+my $schema_banner = '/etc/sysconfig/rhn/schema-upgrade/banner.txt';
+if (-f $schema_banner and -s $schema_banner) {
+        local *BANNER;
+        open BANNER, $schema_banner or die "Error reading [$schema_banner]: $!\n";
+        while (<BANNER>) {
+                print;
+        }
+        close BANNER;
+
+        if (not @ARGV or $ARGV[0] ne '-y') {
+                local $| = 1;
+                READ_ENTER:
+                print "Hit Enter to continue or Ctrl+C to interrupt: ";
+                my $in = <STDIN>;
+                chomp $in;
+                if ($in ne '') {
+                        goto READ_ENTER;
+                }
+        }
+}
+
+if ($options{db_backend} eq 'oracle') {
+        my $default_tablespace = get_default_oracle_tablespace();
+        my $used_space = run_query(<<EOF);
+                select sum(bytes / 1048576)
+                from user_segments
+                where tablespace_name = '$default_tablespace';
+EOF
+        my $free_space = run_query(<<EOF);
+                select sum(bytes / 1048576)
+                from user_free_space
+                where tablespace_name = '$default_tablespace';
+EOF
+
+        if ($used_space / ($used_space + $free_space) > 0.9) {
+                my $usage = sprintf("%+15s    %+15s    %+15s    %+15s\n",
+                        'Tablespace', 'Used Space (MB)', 'Free Space (MB)', 'Usage (%)');
+                for (1 .. 72) { $usage .= '-'; } $usage .= "\n";
+                $usage .= sprintf("%+15s    %15.2f    %15.2f    %15.2f",
+                                $default_tablespace,
+                                $used_space,
+                                $free_space,
+                                $used_space * 100 / ($used_space + $free_space));
+
+                print <<EOF;
+
+Your database schema occupies more than 90% of currently allocated database
+space.
+
+$usage
+
+Unless your Oracle data files are set to extend automatically, it is advisable
+to extend the data tablespace allocation before commencing with the schema
+upgrade.
+
+EOF
+                if (not @ARGV or $ARGV[0] ne '-y') {
+                        local $| = 1;
+                        READ_ENTER:
+                        print "Hit Enter to continue or Ctrl+C to interrupt: ";
+                        my $in = <STDIN>;
+                        chomp $in;
+                        if ($in ne '') {
+                                goto READ_ENTER;
+                        }
+                }
+        }
+}
+
+print "Schema upgrade: [$start_schema] -> [$target_schema]\n";
+
+my $retried = 0;
+RETRY:
+
+if ($start_schema eq $target_schema) {
+        warn "Your database schema already matches the schema package version [$target_schema].\n";
+        exit;
+}
+my %upgrade_path;
+my @queue = ( $target_schema_norm );
+if ($start_schema_norm eq $target_schema_norm) {
+        print "The schema version is the same, except for the dist tag.\n";
+        @queue = ();
+        $upgrade_path{$target_schema_norm} = undef;
+}
+if ($start_schema ne $start_schema_norm
+        or $target_schema ne $target_schema_norm) {
+        print "Searching for upgrade path: [$start_schema_norm] -> [$target_schema_norm]\n";
+}
+
+while (@queue) {
+        my $t = shift @queue;
+        my @lookup = glob "$SCHEMA_UPGRADE_DIR/*-to-$t";
+        for (@lookup) {
+                s!^\Q$SCHEMA_UPGRADE_DIR/\E!!;
+                s!-to-\Q$t\E$!!;
+                ## print "  [$_] -> [$t]\n";
+                if ($_ eq $start_schema_norm) {
+                        ## print "    -> start found.\n";
+                }
+                $upgrade_path{$_}{$t} = $upgrade_path{$t};
+                push @queue, $_;
+        }
+}
+
+if (not exists $upgrade_path{$start_schema_norm}) {
+        if (not $retried) {
+                if ($start_schema_norm =~ s!^(.+-.+)-\d+(\.\d+)*$!$1!
+                        and $target_schema_norm =~ s!^(.+-.+)-\d+(\.\d+)*$!$1!) {
+                        $retried++;
+                        goto RETRY;
+                }
+        }
+        if ($retried) {
+                my $trunc_version = 0;
+                if ($start_schema_norm =~ s!^(.+-.+\..+)\.[^.-]+$!$1!) {
+                        $trunc_version = 1;
+                }
+                if ($target_schema_norm =~ s!^(.+-.+\..+)\.[^.-]+$!$1!) {
+                        $trunc_version = 1;
+                }
+                if ($trunc_version) {
+                        goto RETRY;
+                }
+        }
+        die "Was not able to find upgrade path in directory [$SCHEMA_UPGRADE_DIR].\n";
+}
+
+my @path = get_shortest_path($upgrade_path{$start_schema_norm}, $target_schema_norm);
+print "The path: ", (join " -> ", map "[$_]", $start_schema_norm, @path), "\n";
+
+my $default_tablespace;
+$default_tablespace = get_default_oracle_tablespace() if ($options{db_backend} eq 'oracle');
+
+mkdir "/var/log/spacewalk", 0755;
+mkdir $SCHEMA_UPGRADE_LOGDIR, 0755;
+if (not -e $SCHEMA_UPGRADE_LOGDIR) {
+        die "Failed to create log directory [$SCHEMA_UPGRADE_LOGDIR]: $!\n";
+}
+system("/sbin/restorecon $SCHEMA_UPGRADE_LOGDIR 2>&1 > /dev/null");
+
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
+my $stamp = sprintf "%04d%02d%02d-%02d%02d%02d", $year + 1900, $mon + 1, $mday,
+        $hour, $min, $sec;
+
+my $start = $start_schema_norm;
+my $in = <<EOF;
+update rhnVersionInfo
+       set label = 'schema-from-' || to_char(created, 'YYYYMMDD-HH24MISS'),
+           modified = current_timestamp
+       where label = 'schema';
+commit;
+EOF
+
+while (@path) {
+        my $t = shift @path;
+        my $dir = "$start-to-$t";
+        if (not -e "$SCHEMA_UPGRADE_DIR/$dir") {
+                die "Directory [$SCHEMA_UPGRADE_DIR/$dir] was seen but is lost now.\n";
+        }
+
+        my @files = match_overrides("$SCHEMA_UPGRADE_DIR/$dir/*.ref", "$SCHEMA_UPGRADE_DIR/$dir/*.{sql,ref}.$options{db_backend}");
+        for (my $i = 0; $i < @files; $i++) {
+                if ($files[$i] =~ /\.ref(\.$options{db_backend})?$/) {
+                        my @subfiles;
+                        local *REF;
+                        open REF, $files[$i] or die "Error reading [$files[$i]]: $!\n";
+                        while (<REF>) {
+                                chomp;
+                                next if /^\s*(#|$)/;
+                                my @newsubfiles = match_overrides("$SCHEMA_UPGRADE_DIR/$_", "$SCHEMA_UPGRADE_DIR/$_.$options{db_backend}");
+                                if (not @newsubfiles) {
+                                        die "Could not find any files matching [$_] from [$files[$i]]\n";
+                                }
+                                push @subfiles, @newsubfiles;
+                        }
+                        close REF;
+                        splice @files, $i, 1, @subfiles;
+                        $i--;
+                }
+        }
+
+        for my $fullname (@files) {
+                (my $name = $fullname) =~ s!^.*/!!;
+                local *FILE;
+                open FILE, $fullname or die "Error reading [$fullname]: $!\n";
+                my $f_in;
+                {
+                local $/ = undef;
+                $f_in = <FILE>;
+                }
+                close FILE;
+                $f_in =~ s!^--.*\n!!gm;
+                $f_in =~ s!\[\[.*?\]\]|__.*?__!$default_tablespace!g if defined $default_tablespace;
+                $in .= <<EOF;
+select '$dir/$name' from dual;
+EOF
+                $in .= $f_in;
+                $in .= "commit;\n";
+        }
+        # print $in;
+        $start = $t;
+}
+
+my $backend_dir = ( $options{db_backend} eq 'postgresql' ? 'postgres' : $options{db_backend} );
+my $endfile = "/etc/sysconfig/rhn/$backend_dir/upgrade-end.sql";
+local * END;
+open END, '<', $endfile or die "Error reading [$endfile]: $!\n";
+{
+local $/ = undef;
+$in .= join '', <END>;
+}
+close END;
+
+$in .= <<EOF;
+insert into rhnVersionInfo
+       ( label, name_id, evr_id, created, modified )
+       values ('schema', lookup_package_name('$my_schema_name'),
+               lookup_evr(null, '$my_schema_version' , '$my_schema_release' ),
+               current_timestamp, current_timestamp );
+commit;
+EOF
+
+local *SQL;
+open SQL, "> $SCHEMA_UPGRADE_LOGDIR/$stamp-script.sql" or die "Error writing [$SCHEMA_UPGRADE_LOGDIR/$stamp-script.sql]: $!.\n";
+print SQL $in;
+close SQL;
+
+if (not @ARGV or $ARGV[0] ne '-y') {
+        print "Planning to run spacewalk-sql with [$SCHEMA_UPGRADE_LOGDIR/$stamp-script.sql]\n";
+        print "\nPlease make sure you have a valid backup of your database before continuing.\n\n";
+        local $| = 1;
+        READ_ENTER:
+        print "Hit Enter to continue or Ctrl+C to interrupt: ";
+        my $in = <STDIN>;
+        chomp $in;
+        if ($in ne '') {
+                goto READ_ENTER;
+        }
+}
+
+my $logfile = $SCHEMA_UPGRADE_LOGDIR . "/$stamp-to-$target_schema_norm.log";
+
+local * LOG;
+open LOG, '>>', $logfile or die "Error writing logfile [$logfile]: $!\n";
+
+system("/sbin/restorecon $logfile 2>&1 > /dev/null");
+
+print "Executing spacewalk-sql, the log is in [$logfile].\n";
+
+my $pid = IPC::Open3::open3(my $wfh, '>&LOG', '>&LOG',
+        'spacewalk-sql', '--select-mode-direct', "$SCHEMA_UPGRADE_LOGDIR/$stamp-script.sql") or die "Error running spacewalk-sql: $!\n";
+close $wfh;
+
+waitpid $pid, 0;
+if ($?) {
+        die "Upgrade failed, please see log [$logfile].\n";
+}
+
+my $new_schema_version = run_query(<<EOF);
+        select rhnPackageName.name || '-' || (PE.evr).version || '-' || (PE.evr).release
+        from rhnVersionInfo, rhnPackageName, rhnPackageEVR PE
+        where rhnVersionInfo.label = 'schema'
+                and rhnVersionInfo.name_id = rhnPackageName.id
+                and rhnVersionInfo.evr_id = PE.id;
+EOF
+if (not defined $new_schema_version) {
+        die "Upgrade seems to have run OK yet new schema version is not in rhnVersionInfo.\n";
+}
+if ($new_schema_version ne $target_schema) {
+        die <<EOF;
+Upgrade seems to have run OK yet new schema version is
+    [$new_schema_version], not [$target_schema].
+EOF
+}
+
+print "The database schema was upgraded to version [$target_schema].\n";
+
+exit;
+
+sub run_query {
+        my ($command) = @_;
+        my $pid = IPC::Open3::open3(my $wfh, my $rfh, '>&STDERR',
+                'spacewalk-sql', '--select-mode', '-') or return;
+        print $wfh $command;
+        print $wfh "\n";
+        close $wfh;
+
+        my $out;
+        my $seen_dashes = 0;
+        while (<$rfh>) {
+                if (not defined $out and $seen_dashes) {
+                        $out = $_;
+                        last;
+                }
+                if (/---/) {
+                        $seen_dashes = 1;
+                }
+        }
+        close $rfh;
+        waitpid $pid, 0;
+        if ($?) {
+                return;
+        }
+
+        $out =~ s/^\s+|\s+$//g if defined $out;
+        return $out;
+}
+
+sub get_shortest_path {
+        my ($hash, $target) = @_;
+        my @out;
+        for my $k (keys %$hash) {
+                if ($k eq $target) {
+                        return $k;
+                }
+                my @k_out = ($k, get_shortest_path($hash->{$k}, $target));
+                if (not @out || (@k_out and @k_out < @out)) {
+                        @out = @k_out;
+                }
+        }
+        @out;
+}
+
+sub match_overrides {
+        return sort map {-e "$_.override" ? "$_.override" : $_} grep { -e $_ } map { glob } @_;
+}
+
+sub get_default_oracle_tablespace {
+        my $def_ts = run_query(<<EOF);
+                select default_tablespace
+                from user_users
+                where username = sys_context('userenv', 'session_user');
+EOF
+        if (not defined $def_ts) {
+                die "Failed to retrieve default_tablespace from database.\n";
+        }
+        return $def_ts;
+}
+
+1;
+
+=head1 NAME
+
+spacewalk-schema-upgrade - utility for Spacewalk / Satellite schema upgrade
+
+=head1 SYNOPSIS
+
+B<spacewalk-schema-upgrade>
+[B<-y>]
+
+=head1 OPTIONS
+
+=over 5
+
+=item B<-y>
+
+Proceed without asking for confirmation.
+
+=back
+
+=head1 DESCRIPTION
+
+B<spacewalk-schema-upgrade> is utility for Spacewalk and Satellite database
+schema upgrade.
+
+Let's assume you're upgrading your Satellite or Spacewalk installation
+from an earlier version and you are done with the package upgrade part
+plus any other steps that were required for your installation to be ready
+for schema upgrade. What B<spacewalk-schema-upgrade> will do for you at this
+point is:
+
+=over 5
+
+=item
+
+Read the database connection string from existing config file.
+
+=item
+
+Read the version of your current (i.e. old) schema from database.
+
+=item
+
+Find the schema version you are about to upgrade to (using an rpm query
+command).
+
+=item
+
+Find shortest upgrade path between said schema versions.
+
+=item
+
+Ask the user for confirmation to proceed with the upgrade (can be overriden
+with B<-y> switch).
+
+=item
+
+Proceed with the schema upgrade following the upgrade path found, putting
+the output from executed sql scripts (including errors if any)
+into F</var/log/spacewalk/schema-upgrade>. For this step it is important
+that you have spacewalk-sql command in your PATH.
+
+=back
+
+=head1 FILES
+
+=over 5
+
+=item F</etc/sysconfig/rhn/schema-upgrade>
+
+Directory containing directories with schema upgrade scripts (one directory for
+every major upgrade step).
+
+=item F</etc/rhn/rhn.conf>
+
+Default configuration file containing database connection information.
+
+=item F</var/log/spacewalk/schema-upgrade>
+
+Directory containing output from sql upgrade scripts.
+
+=back
+
+=head1 AUTHORS
+
+Jan Pazdziora
+
+=cut
+

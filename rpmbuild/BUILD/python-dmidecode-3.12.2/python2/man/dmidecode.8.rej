@@ -1,0 +1,27 @@
+--- man/dmidecode.8
++++ man/dmidecode.8
+@@ -1,4 +1,4 @@
+-.TH DMIDECODE 8 "November 2008" "dmidecode"
++.TH DMIDECODE 8 "March 2012" "dmidecode"
+ .SH NAME
+ dmidecode \- \s-1DMI\s0 table decoder
+ .SH SYNOPSIS
+@@ -145,7 +152,7 @@
+ Type   Information
+ 0      BIOS
+ 1      System
+-2      Base Board
++2      Baseboard
+ 3      Chassis
+ 4      Processor
+ 5      Memory Controller
+@@ -184,7 +191,8 @@
+ 38     IPMI Device
+ 39     Power Supply
+ 40     Additional Information
+-41     Onboard Device
++41     Onboard Devices Extended Information
++42     Management Controller Host Interface
+ .TE
+ 
+ Additionally, type 126 is used for disabled entries and type 127 is an

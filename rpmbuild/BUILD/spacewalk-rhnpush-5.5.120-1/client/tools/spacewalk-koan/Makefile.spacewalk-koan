@@ -1,0 +1,16 @@
+# what is the top dir
+TOP     = .
+
+# Specific stuff
+SUBDIRS = 	actions \
+            spacewalkkoan
+
+SBIN_DIR        = /usr/sbin
+INSTALL_DEST    = $(SBIN_DIR)
+INSTALL_FILES   = merge-rd.sh
+
+
+include $(TOP)/Makefile.defs
+
+# Install files as binaries
+INSTALL_DATA    = $(INSTALL_BIN)

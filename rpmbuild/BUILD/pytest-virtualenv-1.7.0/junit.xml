@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="16" time="6.337"><testcase classname="tests.integration.test_tmpvirtualenv" file="tests/integration/test_tmpvirtualenv.py" line="12" name="test_installed_packages" time="6.296430349349976"><system-out>Using base prefix &apos;/usr&apos;
+New python executable in /tmp/tmpbh16m5ko/.env/bin/platform-python3.6
+Also creating executable in /tmp/tmpbh16m5ko/.env/bin/python
+Installing setuptools, pip, wheel...done.
+Running virtualenv with interpreter /usr/libexec/platform-python3.6
+</system-out><system-err>2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace pytest_shutil created workspace /tmp/tmpbh16m5ko
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace This workspace will delete itself on teardown
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:15,915 DEBUG pytest_shutil.workspace run: [&apos;/usr/libexec/platform-python&apos;, &apos;-m&apos;, &apos;virtualenv&apos;, &apos;-p&apos;, &apos;/usr/libexec/platform-python3.6&apos;, &apos;/tmp/tmpbh16m5ko/.env&apos;]
+2020-03-04 15:16:22,061 DEBUG pytest_shutil.workspace run: [&apos;/tmp/tmpbh16m5ko/.env/bin/python&apos;, &apos;-c&apos;, &quot;from pkg_resources import working_set\nfor i in working_set: print(i.project_name + &apos; &apos; + i.version + &apos; &apos; + i.location)&quot;]
+2020-03-04 15:16:22,190 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,190 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,190 DEBUG pytest_shutil.workspace pytest_shutil deleting workspace /tmp/tmpbh16m5ko
+2020-03-04 15:16:22,190 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,190 DEBUG pytest_shutil.workspace 
+</system-err></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="3" name="test_issrc_dev_in_version_plus_path_to_source_True" time="0.0004420280456542969"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="8" name="test_issrc_no_dev_in_version_plus_path_to_source_False" time="0.00036406517028808594"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="13" name="test_isdev_path_to_source_blank_string_True" time="0.0003941059112548828"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="18" name="test_issrc_path_to_source_None_False" time="0.00033211708068847656"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="23" name="test_isdev_dev_in_version_plus_path_to_source_False" time="0.0003292560577392578"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="28" name="test_isdev_dev_in_version_path_to_source_None_True" time="0.00033664703369140625"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="33" name="test_isdev_no_dev_in_version_path_to_source_None_False" time="0.0003829002380371094"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="38" name="test_isrel_no_dev_in_version_path_to_source_None_True" time="0.00032901763916015625"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="43" name="test_isrel_no_dev_in_version_plus_path_to_source_True" time="0.00032520294189453125"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="48" name="test_isrel_no_dev_in_version_plus_path_to_source_None_False" time="0.0003459453582763672"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="53" name="test_match_dev_ok" time="0.0003447532653808594"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="61" name="test_match_source_ok" time="0.0004239082336425781"></testcase><testcase classname="tests.unit.test_package_entry" file="tests/unit/test_package_entry.py" line="68" name="test_match_rel_ok" time="0.00033354759216308594"></testcase><testcase classname="tests.unit.test_venv" file="tests/unit/test_venv.py" line="6" name="test_PYTHONPATH_not_present_in_testing_env_if_set" time="0.0023555755615234375"><system-err>2020-03-04 15:16:22,223 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,223 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace pytest_shutil created workspace /tmp/tmprrck227r
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace This workspace will delete itself on teardown
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace pytest_shutil deleting workspace /tmp/tmprrck227r
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,224 DEBUG pytest_shutil.workspace pytest_shutil created workspace /tmp/tmpbir23uu0
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace This workspace will delete itself on teardown
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace pytest_shutil deleting workspace /tmp/tmpbir23uu0
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,225 DEBUG pytest_shutil.workspace 
+</system-err></testcase><testcase classname="tests.unit.test_venv" file="tests/unit/test_venv.py" line="18" name="test_PYTHONPATH_not_present_in_testing_env_if_unset" time="0.002267599105834961"><system-err>2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace pytest_shutil created workspace /tmp/tmplx8u2aqu
+2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace This workspace will delete itself on teardown
+2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,226 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace pytest_shutil deleting workspace /tmp/tmplx8u2aqu
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace pytest_shutil created workspace /tmp/tmpp9i3w5xw
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace This workspace will delete itself on teardown
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,227 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,228 DEBUG pytest_shutil.workspace 
+2020-03-04 15:16:22,228 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,228 DEBUG pytest_shutil.workspace pytest_shutil deleting workspace /tmp/tmpp9i3w5xw
+2020-03-04 15:16:22,228 DEBUG pytest_shutil.workspace =======================================================
+2020-03-04 15:16:22,228 DEBUG pytest_shutil.workspace 
+</system-err></testcase></testsuite>

@@ -1,0 +1,9 @@
+six
+execnet
+contextlib2
+pytest
+path.py
+mock
+
+[tests]
+pytest

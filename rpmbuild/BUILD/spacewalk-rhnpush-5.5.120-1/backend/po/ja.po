@@ -1,0 +1,1118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Hirofumi Saito <hi_saito@yk.rim.or.jp>, 2004.
+# kiyoto james hashida <khashida@brisbane.redhat.com>, 2007.
+# Kiyoto James Hashida <khashida@redhat.com>, 2006.
+# Noriko Mizumoto <noriko@redhat.com>, 2004-2007.
+# noriko <noriko@fedoraproject.org>, 2011.
+# Tadashi Jokagi <fedora@elf.no-ip.org>, 2005.
+# Yukihiro Nakai <ynakai@redhat.com>, 2001.
+# Jiri Dostal <jdostal@redhat.com>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: Spacewalk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-23 14:32+0100\n"
+"PO-Revision-Date: 2018-03-16 10:54+0000\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: Japanese <trans-ja@lists.fedoraproject.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Zanata 4.6.2\n"
+
+#: ../server/apacheAuth.py:67
+#, python-format
+msgid "incomplete proxy authentication token: %s"
+msgstr "不完全なプロキシ認証トークンです: %s"
+
+#: ../server/apacheAuth.py:85
+#, python-format
+msgid "Sent proxy signature %s does not match ours %s."
+msgstr "送信されたプロキシ署名 %s がこちら側の %s と一致しません。"
+
+#: ../server/apacheAuth.py:120
+msgid "declined proxy authentication"
+msgstr "プロキシ認証が拒否されました"
+
+#: ../server/apacheRequest.py:59
+#, python-format
+msgid "Invalid request received (%s)."
+msgstr "無効な要求を受け取りました (%s)。"
+
+#: ../server/apacheRequest.py:120
+#, python-format
+msgid ""
+"IMPORTANT MESSAGE FOLLOWS:\n"
+"%s"
+msgstr ""
+"重要なメッセージです:\n"
+"%s"
+
+#: ../server/apacheRequest.py:149
+#, python-format
+msgid ""
+"While running '%s': caught\n"
+"%s : %s\n"
+msgstr ""
+"「%s」の実行中: 次をキャッチしました\n"
+"%s : %s\n"
+
+#: ../server/apacheRequest.py:602
+#, python-format
+msgid "Invalid URI %s"
+msgstr "無効な URI %s"
+
+#: ../server/handlers/applet/applet.py:78
+msgid "Your system was not found in the RHN database"
+msgstr "システムが RHN データベース内には見つかりませんでした。"
+
+#: ../server/handlers/sat/auth.py:45
+msgid "ISS is disabled on this satellite."
+msgstr "ISS がこの Satellite では無効になっています。"
+
+#: ../server/handlers/sat/auth.py:50
+#, python-format
+msgid "Server \"%s\" is not enabled for ISS."
+msgstr "サーバー「%s」は ISS に有効になっていません。"
+
+#: ../server/handlers/xmlrpc/errata.py:62
+#, python-format
+msgid "Expected a package name, not: %s"
+msgstr "パッケージ名が期待されています、次ではありません: %s"
+
+#: ../server/handlers/xmlrpc/errata.py:113
+#, python-format
+msgid "Expected a package, not: %s"
+msgstr "パッケージが期待されています、 次ではありません: %s"
+
+#: ../server/handlers/xmlrpc/proxy.py:63
+#, fuzzy, python-format
+msgid "Spacewalk Proxy service not enabled for server profile: \"%s\""
+msgstr ""
+"RHN Proxy サービスがサーバープロファイルに対して有効になっていません: 「%s」"
+
+#: ../server/handlers/xmlrpc/proxy.py:83
+msgid "Invalid session key"
+msgstr "無効なセッションキー"
+
+#: ../server/handlers/xmlrpc/proxy.py:91
+msgid "This server ID no longer exists"
+msgstr "このサーバー ID は既になくなりました"
+
+#: ../server/handlers/xmlrpc/queue.py:434
+#, python-format
+msgid "Invalid action value type %s (%s)"
+msgstr "無効な動作値タイプ %s (%s)"
+
+#: ../server/handlers/xmlrpc/queue.py:459
+#, python-format
+msgid "Action %s does not belong to server %s"
+msgstr "動作 %s はサーバー %s に属していません"
+
+#: ../server/handlers/xmlrpc/scap.py:89
+#, fuzzy
+msgid "Invalid system_id/action_id pair."
+msgstr "無効なシステム認証情報です。"
+
+#: ../server/handlers/xmlrpc/up2date.py:234
+#, python-format
+msgid "Invalid value %s (%s)"
+msgstr "無効な値  %s (%s)"
+
+#: ../server/handlers/xmlrpc/registration.py:204
+msgid "Required data missing"
+msgstr "必要なデータが足りません"
+
+#: ../server/handlers/xmlrpc/registration.py:208
+msgid "Required members missing"
+msgstr "必要なメンバーが足りません"
+
+#: ../server/handlers/xmlrpc/registration.py:217
+msgid "Attempt to register a system to an invalid username"
+msgstr "システムを無効なユーザー名に登録しようとしています"
+
+#: ../server/handlers/xmlrpc/registration.py:225
+#, python-format
+msgid ""
+"\n"
+"                   %s Account has been deactivated on this server.\n"
+"                   Please contact your Org administrator for more help."
+msgstr ""
+"\n"
+"                   %s アカウントは本サーバー上では非アクティブになっていま"
+"す。\n"
+"                   組織の管理者にお問い合わせください。"
+
+#: ../server/handlers/xmlrpc/registration.py:829
+msgid "Invalid system release version requested"
+msgstr "無効なシステムリリースバージョンを要求しています"
+
+#: ../server/handlers/xmlrpc/registration.py:1061
+#, fuzzy
+msgid "Red Hat Satellite Welcome Message"
+msgstr "Red Hat Network のようこそメッセージ"
+
+#: ../server/handlers/xmlrpc/registration.py:1071
+#, fuzzy
+msgid "Red Hat Satellite Privacy Statement"
+msgstr "Red Hat Network プライバシーステートメント"
+
+#: ../server/handlers/xmlrpc/registration.py:1092
+msgid "Expected a dictionary as a product argument"
+msgstr "製品の引数としてディクショナリが期待されています"
+
+#: ../server/handlers/xmlrpc/registration.py:1302
+#, python-format
+msgid "Invalid value '%s' for %s (%s)"
+msgstr "無効な値 '%s' − %s (%s)"
+
+#: ../server/importlib/userAuth.py:98
+msgid "You are not authorized to manage packages in the null org"
+msgstr "null org にあるパッケージを管理する権限が与えられていません"
+
+#: ../server/importlib/userAuth.py:103
+#, python-format
+msgid "You are not allowed to manage packages in the %s org"
+msgstr "%s org 内のパッケージの管理は許可されていません"
+
+#: ../server/importlib/userAuth.py:121
+msgid "You are not allowed to perform administrative tasks"
+msgstr "管理に関する作業を行う許可がありません"
+
+#: ../server/importlib/userAuth.py:144
+#, python-format
+msgid ""
+"You are not allowed to manage channel %s, or that channel does not exist"
+msgstr ""
+"チャンネル %s の管理は許可されていないか、 またはこのチャンネルは存在していま"
+"せん"
+
+#: ../server/rhnHandler.py:62
+msgid "Please run rhn_register as root on this client"
+msgstr ""
+
+#: ../server/rhnHandler.py:75
+#, python-format
+msgid "Service not enabled for system profile: \"%s\""
+msgstr "システムプロファイルに対してサービスが有効になっていません: 「%s」"
+
+#: ../server/rhnPackage.py:46 ../server/rhnPackage.py:81
+#: ../server/rhnPackage.py:101 ../server/rhnPackage.py:152
+#, python-format
+msgid "Invalid RPM package %s requested"
+msgstr "無効な RPM パッケージ %s を要求しています"
+
+#: ../server/rhnPackage.py:106
+msgid "Package not found"
+msgstr "パッケージが見つかりません"
+
+#: ../server/rhnServer/server_class.py:97
+#, python-format
+msgid "Architecture `%s' is not supported"
+msgstr "アーキテクチャ `%s' はサポートされていません"
+
+#: ../server/rhnServer/server_token.py:77
+#, python-format
+msgid "Token `%s' has more than one base channel assigned"
+msgstr "トークン `%s' には 1 つ以上のベースチャンネルが割り当てられています"
+
+#: ../server/rhnServer/server_token.py:79
+msgid "Conflicting base channels"
+msgstr "競合しているベースチャンネル"
+
+#: ../server/rhnServer/server_token.py:189
+#, python-format
+msgid "Failed to add server to group %s"
+msgstr "グループ %s へのサーバーの追加に失敗しました"
+
+#: ../server/rhnServer/server_token.py:502
+#, python-format
+msgid "Maximum usage count of %s reached"
+msgstr "最大使用数 %s に達しました"
+
+#: ../server/rhnServer/server_token.py:733
+msgid ""
+"Stacking of re-registration tokens with different base entitlements is not "
+"supported"
+msgstr ""
+"異なるベースエンタイトルメントでの再登録トークンの積み重ねには対応していませ"
+"ん"
+
+#: ../server/rhnServer/server_token.py:787
+#, python-format
+msgid "Could not find token '%s'"
+msgstr "トークン「%s」は見つかりませんでした"
+
+#. Cannot use activation keys from different orgs
+#: ../server/rhnServer/server_token.py:819
+msgid "Tokens from mismatching orgs"
+msgstr "不一致の 　org からのトークンです"
+
+#. Two tokens with different kickstart sessions
+#: ../server/rhnServer/server_token.py:829
+msgid "Kickstart session mismatch"
+msgstr "キックスタートセッションの不一致です"
+
+#: ../server/rhnServer/server_token.py:849
+msgid "Stacking of re-registration tokens is not supported"
+msgstr "再登録トークンの積み重ねには対応していません"
+
+#: ../server/rhnUser.py:289 ../server/rhnUser.py:292
+msgid "Invalid username/password combination"
+msgstr "無効なユーザー名とパスワードの組み合わせです"
+
+#. nope, not reserved either
+#: ../server/rhnUser.py:468
+#, python-format
+msgid "Username `%s' has not been reserved"
+msgstr "ユーザー名 `%s' は予約されていません"
+
+#. New accounts have to specify an e-mail address
+#: ../server/rhnUser.py:474
+msgid "E-mail address not specified"
+msgstr "Email アドレスが指定されていません"
+
+#: ../server/rhnUser.py:510
+#, python-format
+msgid "username should be at least %d characters"
+msgstr "ユーザー名は少なくとも %d 文字以上にしてください"
+
+#: ../server/rhnUser.py:513
+#, python-format
+msgid "username should be less than %d characters"
+msgstr "ユーザー名は %d 文字未満にしてください"
+
+#: ../server/rhnUser.py:524
+#, python-format
+msgid "username = `%s', invalid character `%s'"
+msgstr "ユーザー名 = `%s'、 無効な文字 `%s'"
+
+#: ../server/rhnUser.py:543
+#, python-format
+msgid "Please limit your e-mail address to %s chars"
+msgstr "Email アドレスは %s 文字以内にしてください"
+
+#: ../server/rhnUser.py:624
+#, python-format
+msgid "password must be at least %d characters"
+msgstr "パスワードは少なくとも %d 文字に以上にしてください"
+
+#: ../server/rhnUser.py:627
+#, python-format
+msgid "Password must be shorter than %d characters"
+msgstr "パスワードは %d 文字以内にしてください"
+
+#: ../server/rhnUser.py:645
+#, python-format
+msgid "password contains character `%s'"
+msgstr "パスワードに `%s' 文字が含まれています"
+
+#: ../server/rhnUser.py:652
+#, python-format
+msgid "username should be at least %d characters long"
+msgstr "ユーザー名は少なくとも %d 文字以上の長さにしてください"
+
+#: ../server/rhnUser.py:663
+#, python-format
+msgid "Cannot register usernames ending with %s"
+msgstr "%s で終わるユーザー名は登録できません"
+
+#: ../server/rhnChannel.py:1938
+#, python-format
+msgid ""
+"Your account does not have access to any channels matching "
+"(release='%(release)s', arch='%(arch)s')%(www_activation)s"
+msgstr ""
+"ご使用のアカウントには (release='%(release)s', "
+"arch='%(arch)s')%(www_activation)s に一致するチャンネルのいずれにもアクセスが"
+"ありません。"
+
+#: ../server/rhnChannel.py:1948
+msgid ""
+"\n"
+"If you have a registration number, please register with it first at http://"
+"www.redhat.com/apps/activate/ and then try again.\n"
+"\n"
+msgstr ""
+"\n"
+"登録番号をお持ちの場合は、 まずその番号を http://www.redhat.com/apps/"
+"activate/ にて登録してからやり直してください。\n"
+"\n"
+
+#: ../server/rhnChannel.py:1958
+#, python-format
+msgid "Insufficient subscription permissions for release (%s, %s"
+msgstr "リリース (%s, %s にはサブスクリプションパーミッションが足りません。"
+
+#. Various messages that can be reused
+#.
+#. bretm 02/07/2007 -- when we have better old-client documentation, probably
+#. will be safe to get rid of all this crap
+#: ../server/rhnChannel.py:2222 ../server/rhnChannel.py:2233
+#: ../server/rhnChannel.py:2248
+msgid "System Registered but Inactive"
+msgstr "システムは登録されていますが非アクティブになっています"
+
+#: ../server/rhnChannel.py:2223
+#, fuzzy, python-format
+msgid ""
+"\n"
+"Invalid Architecture and OS release combination (%s, %s).\n"
+"Your system has been registered, but will not receive updates\n"
+"because it is not subscribed to a channel. If you have not yet\n"
+"activated your product for service, please visit our website at:\n"
+"\n"
+"     http://www.redhat.com/apps/activate/\n"
+"\n"
+"...to activate your product."
+msgstr ""
+"\n"
+"アーキテクチャとオペレーティングシステムのリリースの組み合わせ (%s、 %s)\n"
+"が無効です。 システムは登録されていますが、 チャンネルにサブスクライブされ"
+"て\n"
+"いないため更新は行われません。 製品のアクティベートをまだ行っていない場合は\n"
+"次の Web サイトに行き製品のアクティベートを行ってください。\n"
+"  \n"
+"     http://www.redhat.com/apps/activate/\n"
+"\n"
+"  "
+
+#: ../server/rhnChannel.py:2234
+#, python-format
+msgid ""
+"\n"
+"Invalid Architecture and OS release combination (%s, %s).\n"
+"Your system has been registered, but will not receive updates\n"
+"because it could not be subscribed to a base channel.\n"
+"Please contact your organization administrator for assistance.\n"
+msgstr ""
+"\n"
+"アーキテクチャとオペレーティングシステムのリリースの組み合わせ (%s、 %s)\n"
+"が無効です。 システムは登録されていますが、 ベースチャンネルにサブスクライ"
+"ブ\n"
+"させることができなかったため更新は行われません。 詳細については組織の管理者"
+"に\n"
+"お問い合わせください。\n"
+
+#: ../server/rhnChannel.py:2241
+#, python-format
+msgid ""
+"\n"
+"  This system has been successfully registered, but is not yet entitled\n"
+"  to service.  To entitle this system to service, login to the web site at:\n"
+"\n"
+"  %(entitlement_url)s\n"
+msgstr ""
+"\n"
+"  このシステムは正常に登録されていますが、 エンタイトルメントがまだ付与されて"
+"いません。\n"
+"  システムにエンタイトルメントを付与するには次の Web サイトにログインしてくだ"
+"さい。\n"
+"\n"
+"  %(entitlement_url)s\n"
+
+#: ../server/rhnChannel.py:2249
+#, python-format
+msgid ""
+"\n"
+"  This system has been successfully registered, but no service entitlements\n"
+"  were available.  To entitle this system to service, login to the web site "
+"at:\n"
+"\n"
+"  %(entitlement_url)s\n"
+msgstr ""
+"\n"
+"  このシステムは正常に登録されていますが、 利用できるエンタイトルメントがあり"
+"ませんでした。\n"
+"  システムにエンタイトルメントを付与するには次の Web サイトにログインしてくだ"
+"さい。\n"
+"\n"
+"  %(entitlement_url)s\n"
+
+#. 0-999: Red Hat client/client-like interaction errors:
+#: ../common/rhnException.py:53
+msgid "This does not appear to be a valid username."
+msgstr "有効なユーザー名ではないようです。"
+
+#: ../common/rhnException.py:54
+msgid "Invalid username and password combination."
+msgstr "ユーザー名とパスワードの組み合わせが無効です。"
+
+#: ../common/rhnException.py:55
+msgid "This login is already taken, or the password is incorrect."
+msgstr "このログインは既に使用済か、 またはパスワードが間違っています。"
+
+#: ../common/rhnException.py:56
+msgid "Permission denied."
+msgstr "パーミッションが拒否されました。"
+
+#: ../common/rhnException.py:57
+msgid "Object not found."
+msgstr "オブジェクトが見つかりません。"
+
+#: ../common/rhnException.py:58
+msgid "Invalid System Digital ID."
+msgstr "無効なシステムデジタル ID です。"
+
+#: ../common/rhnException.py:59
+msgid "Invalid System Credentials."
+msgstr "無効なシステム認証情報です。"
+
+#: ../common/rhnException.py:60
+msgid "Could not retrieve user data from database."
+msgstr "データベースからユーザーのデータを読み出すことができませんでした。"
+
+#: ../common/rhnException.py:61
+msgid "Valid username required."
+msgstr "有効なユーザー名が必要です。"
+
+#: ../common/rhnException.py:62
+msgid "Valid password required."
+msgstr "有効なパスワードが必要です。"
+
+#: ../common/rhnException.py:63
+msgid "Minimum username length violation."
+msgstr "ユーザー名の最短の長さを違反しています。"
+
+#: ../common/rhnException.py:64
+msgid "Minimum password length violation."
+msgstr "パスワードの最短の長さを違反しています。"
+
+#: ../common/rhnException.py:65
+msgid "The username contains invalid characters."
+msgstr "ユーザー名に無効な文字が含まれています。"
+
+#: ../common/rhnException.py:66
+msgid "File not found."
+msgstr "ファイルが見つかりません。"
+
+#: ../common/rhnException.py:67
+msgid "Architecture and OS version combination is not supported."
+msgstr ""
+"アーキテクチャとオペレーティングシステムのバージョンの組み合わせは対応してい"
+"ません。"
+
+#: ../common/rhnException.py:68
+msgid "Could not retrieve system data from database."
+msgstr "データベースからシステムのデータを読み出すことができませんでした。"
+
+#: ../common/rhnException.py:69
+msgid "Invalid arguments passed to function."
+msgstr "関数に無効な引数が渡されました。"
+
+#: ../common/rhnException.py:70
+msgid "Unable to retrieve requested entry."
+msgstr "要求されたエントリを読み出せません。"
+
+#: ../common/rhnException.py:71
+msgid "Could not update database entry."
+msgstr "データベースのエントリを更新できませんでした。"
+
+#: ../common/rhnException.py:72
+msgid "Unsupported server architecture."
+msgstr "未対応のサーバーアーキテクチャです。"
+
+#: ../common/rhnException.py:73
+#, fuzzy, python-format
+msgid ""
+"\n"
+"     The anonymous server functionality is no longer available.\n"
+"\n"
+"     Please re-register this system by running rhn_register\n"
+"     as root.\n"
+"     Please visit https://%(hostname)s/rhn/systems/SystemEntitlements.do\n"
+"     or login at https://%(hostname)s, and from the \"Overview\" tab,\n"
+"     select \"Subscription Management\" to enable the service for this "
+"system.\n"
+"     "
+msgstr ""
+"\n"
+"     匿名サーバー機能は利用できなくなっています。\n"
+"\n"
+"     root になり rhn_register (Red Hat Enterprise Linux 3+ の場合は\n"
+"     up2date --register) を実行してこのシステムの再登録を行ってください。\n"
+"     このシステムに対して RHN サービスを有効にする場合は、 \n"
+"     https://%(hostname)s/rhn/systems/SystemEntitlements.do に行くか\n"
+"     https://%(hostname)s でログインしてから「概要」タブで「サブスクリプショ"
+"ン管理」\n"
+"     を選択します。"
+
+#: ../common/rhnException.py:82
+msgid "Record not available in the database."
+msgstr "データベースに使用できる記録がありません。"
+
+#: ../common/rhnException.py:83
+msgid "Invalid value for entry."
+msgstr "エントリには無効な値です。"
+
+#: ../common/rhnException.py:84
+#, fuzzy, python-format
+msgid ""
+"\n"
+"     This system does not have a valid entitlement for Red Hat Satellite.\n"
+"     Please visit https://%(hostname)s/rhn/systems/SystemEntitlements.do\n"
+"     or login at https://%(hostname)s, and from the \"Overview\" tab,\n"
+"     select \"Subscription Management\" to enable the service for this "
+"system.\n"
+"     "
+msgstr ""
+"\n"
+"     Red Hat Network 用の有効なエンタイトルメントがこのシステムにはありませ"
+"ん。\n"
+"     https://%(hostname)s/rhn/systems/SystemEntitlements.do に行くか、\n"
+"     https://%(hostname)s でログインしてから「概要」タブで「サブスクリプショ"
+"ン管理」\n"
+"     を選択してシステムに RHN サービスを有効にします。\n"
+"     "
+
+#: ../common/rhnException.py:90
+msgid "Channel error"
+msgstr "チャンネルエラー"
+
+#: ../common/rhnException.py:91
+msgid "Client session token is invalid."
+msgstr "クライアントのセッショントークンが無効です。"
+
+#: ../common/rhnException.py:92
+msgid "Client session token has expired."
+msgstr "クライアントのセッショントークンの有効期限が切れています。"
+
+#: ../common/rhnException.py:93
+msgid "You are not authorized to retrieve the requested object."
+msgstr "要求されたオブジェクトを読み出す権限が与えられていません。"
+
+#: ../common/rhnException.py:94
+msgid "Invalid action"
+msgstr "無効な動作"
+
+#: ../common/rhnException.py:95
+msgid "You are not allowed to perform administrative tasks on this system."
+msgstr "このシステムで管理関連の作業を行う許可がありません。"
+
+#: ../common/rhnException.py:97
+msgid "The system is already subscribed to the specified channel."
+msgstr "システムは既に指定チャンネルにサブスクライブされています。"
+
+#: ../common/rhnException.py:98
+msgid "The system is not currently subscribed to the specified channel."
+msgstr "現在、 システムは指定チャンネルにサブスクライブされていません。"
+
+#: ../common/rhnException.py:99
+msgid "The specified channel does not exist."
+msgstr "指定されたチャンネルが存在していません。"
+
+#: ../common/rhnException.py:100
+msgid "Invalid channel version."
+msgstr "無効なチャンネルバージョンです。"
+
+#: ../common/rhnException.py:101
+#, fuzzy
+msgid ""
+"\n"
+"     User group membership limits exceeded.\n"
+"\n"
+"     The current settings for your account do not allow you to add another\n"
+"     user account. Please check with the organization administrator for "
+"your\n"
+"     account if the maximum number of users allowed to subscribe to server "
+"needs\n"
+"     to be changed.\n"
+"     "
+msgstr ""
+"\n"
+"     ユーザーグループのメンバーシップの上限を超えています。\n"
+"\n"
+"     ご使用のアカウントの現在の設定では別のユーザーアカウントの追加は行えませ"
+"ん。\n"
+"     RHN にサブスクライブさせることができる最小ユーザー数を変更する必要がある"
+"場合は\n"
+"     組織の管理者にご確認ください。\n"
+"     \n"
+"     "
+
+#: ../common/rhnException.py:109
+#, fuzzy
+msgid ""
+"\n"
+"     System group membership limits exceeded.\n"
+"\n"
+"     The current settings for your account do not allow you to add another\n"
+"     system profile. Please check with the organization administrator for "
+"your\n"
+"     account for modifying the maximum number of system profiles that can "
+"be\n"
+"     subscribed to your account.\n"
+"     "
+msgstr ""
+"\n"
+"     システムグループのメンバーシップの上限を超えています。\n"
+"\n"
+"     ご使用のアカウントの現在の設定では別のシステムプロファイルの追加は行えま"
+"せん。\n"
+"     RHN アカウントにサブスクライブさせることができる最小システムプロファイル"
+"数を\n"
+"     変更する必要がある場合は組織の管理者にご確認ください。\n"
+"     \n"
+"     "
+
+#: ../common/rhnException.py:117
+#, fuzzy
+msgid ""
+"\n"
+"     Invalid architecture.\n"
+"\n"
+"     The architecture of the package is not supported by\n"
+"     "
+msgstr ""
+"\n"
+"     無効なアーキテクチャです。\n"
+"\n"
+"     このパッケージのこのアーキテクチャは Red Hat Network では対応していませ"
+"ん。\n"
+"     "
+
+#: ../common/rhnException.py:122
+msgid "Invalid RPM header"
+msgstr "無効な RPM ヘッダーです"
+
+#. For the uploading tools
+#: ../common/rhnException.py:124
+msgid "Invalid information uploaded to the server"
+msgstr "サーバーに無効な情報がアップロードされました"
+
+#: ../common/rhnException.py:125
+msgid "Error uploading network interfaces configuration."
+msgstr ""
+"ネットワークインターフェースの設定をアップロード中にエラーが発生しました。"
+
+#: ../common/rhnException.py:126
+msgid ""
+"\n"
+"     Package Upload Failed due to uniqueness constraint violation.\n"
+"     Make sure the package does not have any duplicate dependencies or\n"
+"     does not already exists on the server\n"
+"     "
+msgstr ""
+"\n"
+"     一意性制約の違反によりパッケージのアップロードが失敗しました。\n"
+"     パッケージに重複する依存関係がないこと、 またはこのパッケージが\n"
+"     まだサーバーに存在していないことを確認してください。\n"
+"     "
+
+#: ../common/rhnException.py:131
+#, fuzzy
+msgid ""
+"\n"
+"     The --force rhnpush option is disabled on this server.\n"
+"     Please contact your Satellite administrator for more help.\n"
+"     "
+msgstr ""
+"\n"
+"     このサーバー上では --force rhnpush のオプションは無効になっています。\n"
+"     詳細については担当の Satellite 管理者にお問い合わせください。\n"
+"     "
+
+#. 60-70: token errors
+#: ../common/rhnException.py:137
+msgid ""
+"\n"
+"     The activation token specified could not be found on the server.\n"
+"     Please retry with a valid key.\n"
+"     "
+msgstr ""
+"\n"
+"     指定されたアクティベーショントークンがサーバーに見つかりませんでした。\n"
+"     有効なキーでやり直してください。\n"
+"     "
+
+#: ../common/rhnException.py:141
+msgid "Too many systems registered using this registration token"
+msgstr "この登録トークンを使用して登録されたシステムが多すぎます"
+
+#: ../common/rhnException.py:142
+msgid "Token contains invalid, obsoleted or insufficient settings"
+msgstr ""
+"無効な設定、 またはサポートされていないか不適切な設定を含むトークンです"
+
+#: ../common/rhnException.py:143
+msgid "Conflicting activation tokens"
+msgstr "アクティベーショントークンが競合しています"
+
+#. 70-80: channel subscription errors
+#: ../common/rhnException.py:146
+msgid ""
+"\n"
+"     No matching base channel found for your system.\n"
+"     "
+msgstr ""
+
+#: ../common/rhnException.py:149
+msgid ""
+"\n"
+"     You do not have subscription permission to the designated channel.\n"
+"     Please refer to your organization's channel or organization\n"
+"     administrators for further details.\n"
+"     "
+msgstr ""
+"\n"
+"     指定チャンネルへのサブスクリプションパーミッションがありません。\n"
+"     詳細については組織の管理者またはチャンネル管理者にお問い合わせくださ"
+"い。\n"
+"     \n"
+"     "
+
+#: ../common/rhnException.py:154
+msgid "You can not unsubscribe from base channel."
+msgstr "ベースチャンネルのサブスクリプションを解除することはできません。"
+
+#: ../common/rhnException.py:155
+msgid "Satellite or Proxy channel can not be subscribed."
+msgstr ""
+
+#. 80-90: server group errors
+#: ../common/rhnException.py:158
+msgid "There was an error while trying to join the system to its groups"
+msgstr "システムをそのグループに参加させる途中でエラーが発生しました"
+
+#. 90-100: entitlement errors
+#: ../common/rhnException.py:161
+msgid "Unable to entitle system"
+msgstr "システムにエンタイトルメントを付与できません"
+
+#. 100-109: e-mail and uuid related faults
+#: ../common/rhnException.py:164
+msgid "Maximum e-mail length violation."
+msgstr "Email の最大長を超えています。"
+
+#: ../common/rhnException.py:165
+msgid "This system has been previously registered."
+msgstr "このシステムは既に登録されています。"
+
+#: ../common/rhnException.py:166
+msgid "Invalid username"
+msgstr "無効なユーザー名"
+
+#. 140-159 applet errors
+#: ../common/rhnException.py:169
+msgid "Unable to look up server"
+msgstr "サーバーを検出できません"
+
+#. 160-179: OSAD errors
+#: ../common/rhnException.py:172
+msgid "Required argument is missing"
+msgstr "必要な引数がありません"
+
+#. 600-699: RHEL5+ EN errors
+#: ../common/rhnException.py:175
+msgid "No entitlement information tied to hardware"
+msgstr "ハードウェアに関連づけられているエンタイトルメント情報がありません"
+
+#: ../common/rhnException.py:176
+msgid "Installation number is not entitling"
+msgstr "インストール番号にエンタイトルメントが付与されていません"
+
+#. 700-799: Additional user input verification errors.
+#: ../common/rhnException.py:179
+msgid "Maximum username length violation"
+msgstr "ユーザー名の最大長を超えています"
+
+#: ../common/rhnException.py:180
+msgid "Maximum password length violation"
+msgstr "パスワードの最大長を超えています"
+
+#: ../common/rhnException.py:181
+msgid "This user has read only API access. Action denied."
+msgstr ""
+
+#: ../common/rhnException.py:183
+#, fuzzy
+msgid "System Name cannot be less than 1 character"
+msgstr "ユーザー名は %d 文字未満にしてください"
+
+#. 1000-1999: Proxy specific errors:
+#. issued by a Proxy to the client
+#: ../common/rhnException.py:187
+#, fuzzy
+msgid "Spacewalk Proxy error."
+msgstr "RHN Proxy のエラーです。"
+
+#: ../common/rhnException.py:188
+#, fuzzy
+msgid "Spacewalk Proxy unable to login."
+msgstr "RHN Proxy によるログインができません。"
+
+#. issued by a Red Hat Server/Satellite to the proxy
+#: ../common/rhnException.py:190
+msgid ""
+"\n"
+"     Spacewalk Proxy system ID does not match a Spacewalk Proxy Server\n"
+"     in the database.\n"
+"     "
+msgstr ""
+
+#: ../common/rhnException.py:194
+#, fuzzy
+msgid "Spacewalk Proxy session token is invalid."
+msgstr "RHN Proxy セッショントークンが無効です。"
+
+#: ../common/rhnException.py:195
+#, fuzzy
+msgid "Spacewalk Proxy session token has expired."
+msgstr "RHN Proxy セッショントークンの期限が切れています。"
+
+#. 2000-2999: Red Hat Satellite specific errors:
+#: ../common/rhnException.py:199
+#, fuzzy
+msgid ""
+"\n"
+"      user creation is not allowed via rhn_register;\n"
+"     please contact your sysadmin to have your account created.\n"
+"     "
+msgstr ""
+"\n"
+"     RHN Satellite ユーザーの作成に rhn_register (Red Hat Enterprise Linux "
+"3\n"
+"     またはそれ以降の場合は up2date --register) の使用は許可されていません;\n"
+"     システム管理者にアカウントの作成を依頼してください。\n"
+"     "
+
+#: ../common/rhnException.py:203
+msgid ""
+"\n"
+"     This satellite server is not allowed to use Inter Satellite Sync on "
+"this satellite\n"
+"     "
+msgstr ""
+"\n"
+"     本 Satellite サーバーは本 Satellite での Inter Satellite Sync の使用は許"
+"可されていません。\n"
+"     "
+
+#: ../common/rhnException.py:206
+msgid ""
+"\n"
+"     Inter Satellite Sync is disabled on this satellite.\n"
+"     "
+msgstr ""
+"\n"
+"     Inter Satellite Sync は本 Satellite では無効になっています。\n"
+"     "
+
+#. 3000-3999: XML dumper errors:
+#: ../common/rhnException.py:211
+msgid "Invalid datatype passed"
+msgstr "無効なデータタイプが渡されています"
+
+#: ../common/rhnException.py:212
+msgid "Unable to retrieve channel"
+msgstr "チャンネルが読み出せません"
+
+#: ../common/rhnException.py:213
+msgid "Unable to retrieve package"
+msgstr "パッケージが読み出せません"
+
+#: ../common/rhnException.py:214
+msgid "Unable to retrieve erratum"
+msgstr "エラータが読み出せません"
+
+#: ../common/rhnException.py:215
+msgid "File is missing"
+msgstr "ファイルがありません"
+
+#: ../common/rhnException.py:216
+msgid "Function retrieval error"
+msgstr "関数読み出しのエラーです"
+
+#: ../common/rhnException.py:217
+msgid "Function execution error"
+msgstr "関数実行エラーです"
+
+#: ../common/rhnException.py:218
+msgid "Missing version string"
+msgstr "バージョン文字列がありません"
+
+#: ../common/rhnException.py:219
+msgid "Invalid version string"
+msgstr "無効なバージョン文字列です"
+
+#: ../common/rhnException.py:220
+msgid "Mismatching versions"
+msgstr "バージョンが一致しません"
+
+#: ../common/rhnException.py:221
+msgid "Invalid channel version"
+msgstr "無効なチャンネルバージョンです"
+
+#: ../common/rhnException.py:222
+msgid "No comps file for channel"
+msgstr "チャンネル用の comps ファイルがありません"
+
+#: ../common/rhnException.py:223
+msgid "Unable to retrieve comps file"
+msgstr "comps ファイルが読み出せません"
+
+#. 4000 - 4999: config management errors
+#: ../common/rhnException.py:226
+msgid "Configuration action missing"
+msgstr "設定動作がありません"
+
+#: ../common/rhnException.py:227
+msgid "File too large"
+msgstr "ファイルが長すぎます"
+
+#: ../common/rhnException.py:228
+msgid "File contains binary data"
+msgstr "ファイルにバイナリデータが含まれています"
+
+#: ../common/rhnException.py:229
+msgid "Configuration channel is not empty"
+msgstr "設定チャンネルが空になっていません"
+
+#: ../common/rhnException.py:230
+msgid "Permission error"
+msgstr "パーミッションエラーです"
+
+#: ../common/rhnException.py:231
+msgid "Content missing for configuration file"
+msgstr "設定ファイルの内容がありません"
+
+#: ../common/rhnException.py:232
+msgid "Template delimiters not specified"
+msgstr "テンプレートの区切り文字が指定されていません"
+
+#: ../common/rhnException.py:233
+msgid "Configuration channel does not exist"
+msgstr "設定チャンネルが存在していません"
+
+#: ../common/rhnException.py:234
+msgid "Configuration channel already exists"
+msgstr "設定チャンネルは既に存在しています"
+
+#: ../common/rhnException.py:235
+msgid "File missing from configuration channel"
+msgstr "設定チャンネルからのファイルがありません"
+
+#: ../common/rhnException.py:236
+msgid "Different revision of this file is uploaded"
+msgstr "このファイルの別の改訂版がアップロードされています"
+
+#: ../common/rhnException.py:237
+msgid "File already uploaded to configuration channel"
+msgstr "ファイルは既に設定チャンネルにアップロードされています"
+
+#: ../common/rhnException.py:238
+msgid "File size exceeds remaining quota space"
+msgstr "ファイルサイズが残りの上限領域を超えています"
+
+#: ../common/rhnException.py:239
+msgid "Full path of file must be specified"
+msgstr "ファイルの完全パスを指定してください"
+
+#: ../common/rhnException.py:240
+msgid "Invalid revision number"
+msgstr "無効な改訂版番号です"
+
+#: ../common/rhnException.py:241
+msgid "Cannot compare files of different file type"
+msgstr "タイプが異なるファイル同士は比較できません"
+
+#. 5000 - 5999: client content uploading errors
+#. 5000 - 5099: crash reporting errors
+#: ../common/rhnException.py:245
+msgid "Crash information is invalid or incomplete"
+msgstr ""
+
+#: ../common/rhnException.py:246
+msgid "Crash file information is invalid or incomplete"
+msgstr ""
+
+#: ../common/rhnException.py:247
+msgid "Error composing crash directory path"
+msgstr ""
+
+#: ../common/rhnException.py:248
+msgid "Error composing crash file path"
+msgstr ""
+
+#: ../common/rhnException.py:249 ../common/rhnException.py:256
+#, fuzzy
+msgid "Invalid content encoding"
+msgstr "無効なアイテムコード"
+
+#: ../common/rhnException.py:250
+#, fuzzy
+msgid "Invalid crash name"
+msgstr "無効なパッケージ名です"
+
+#: ../common/rhnException.py:251
+msgid "Crash reporting is disabled for this organization"
+msgstr ""
+
+#. 5100 - 5199: scap results reporting error
+#: ../common/rhnException.py:253
+msgid "SCAP results file transfer is invalid or incomplete"
+msgstr ""
+
+#: ../common/rhnException.py:254
+msgid "Error composing directory path for detailed SCAP results"
+msgstr ""
+
+#: ../common/rhnException.py:255
+msgid "Error composing file path for detailed SCAP results"
+msgstr ""
+
+#: ../common/rhnException.py:303
+msgid ""
+"\n"
+"     An error has occurred while processing your request. If this problem\n"
+"     persists please enter a bug report at bugzilla.redhat.com.\n"
+"     If you choose to submit the bug report, please be sure to include\n"
+"     details of what you were trying to do when this error occurred and\n"
+"     details on how to reproduce this problem.\n"
+msgstr ""
+"\n"
+"     要求の処理中にエラーが発生しました。 問題が解決しない場合は、\n"
+"     bugzilla.redhat.com にてバグ報告を提出してください。\n"
+"     バグ報告を行う場合は、 エラーが起きたときに何を行おうとしていたのか、\n"
+"     また問題を再現する場合の手順などを詳しく記入していただけるよう\n"
+"     お願いします。\n"
+
+#: ../common/rhnException.py:355
+#, python-format
+msgid ""
+"Error Message:\n"
+"    %s\n"
+msgstr ""
+"エラーメッセージ:\n"
+"    %s\n"
+
+#: ../common/rhnException.py:357
+#, python-format
+msgid "Error Class Code: %s\n"
+msgstr "エラークラスコード: %s\n"
+
+#: ../common/rhnException.py:360
+#, python-format
+msgid "Error Class Info: %s\n"
+msgstr "エラークラス情報: %s\n"
+
+#: ../common/rhnException.py:362
+#, python-format
+msgid "Explanation: %s"
+msgstr "説明: %s"
+
+#: ../common/rhnTB.py:205
+#, python-format
+msgid "ERROR: %s %s: %s"
+msgstr ""
+
+#: ../common/rhnTB.py:207
+#, python-format
+msgid "TRACEBACK: %s"
+msgstr ""

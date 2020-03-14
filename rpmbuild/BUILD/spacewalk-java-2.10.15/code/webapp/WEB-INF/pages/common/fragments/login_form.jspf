@@ -1,0 +1,22 @@
+<%@ include file="/WEB-INF/pages/common/fragments/user/user_attribute_sizes.jspf"%>
+
+<div class="form-group">
+  <label for="username-field" class="col-xs-5 control-label"><bean:message key="login.jsp.redhatlogin" /></label>
+  <div class="col-xs-7">
+    <input type="text" id="username-field" class="form-control" tabindex="1" name="username" maxlength="${loginLength}" placeholder="Login" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="password-field" class="col-xs-5 control-label"><bean:message key="login.jsp.password"/></label>
+  <div class="col-xs-7">
+    <input type="password" id="password-field" class="form-control" tabindex="2" name="password" maxlength="${passwordLength}" placeholder="Password" />
+  </div>
+</div>
+
+<div class="text-right">
+  <html:hidden property="login_cb" value="login" />
+   <html:hidden property="url_bounce" value="${url_bounce}" />
+   <html:hidden property="request_method" value="${request_method}" />
+  <html:submit styleId="login" styleClass="btn btn-primary" tabindex="3"><bean:message key="Sign In" /></html:submit>
+</div>

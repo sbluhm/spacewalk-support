@@ -1,0 +1,84 @@
+#!/bin/bash
+
+LSOF="/usr/sbin/lsof"
+if [ -x "/usr/bin/lsof" ]; then
+    LSOF="/usr/bin/lsof"
+fi
+
+wait_for_database() {
+    RETRIES=10;
+    while [ $RETRIES -gt 0 ]; do
+
+        echo "select 0 from dual;" | spacewalk-sql --select-mode - &> /dev/null
+
+        if [ $? -eq 0 ]; then
+            exit 0 # db is running
+        fi
+
+        ((RETRIES--))
+        sleep 1
+    done
+    exit 1
+}
+
+wait_for_jabberd() {
+    RETRIES=10
+    while [ $RETRIES -gt 0 ]
+    do
+        $LSOF -t -i :5222 > /dev/null && break
+        ((RETRIES--))
+        sleep 0.5
+    done
+}
+
+wait_for_tomcat() {
+if [ -x /etc/init.d/tomcat5 ]; then
+   TOMCAT_PID=$(cat /var/run/tomcat5.pid 2>/dev/null)
+elif [ -x /etc/init.d/tomcat6 ]; then
+   TOMCAT_PID=$(cat /var/run/tomcat6.pid 2>/dev/null)
+elif [ -e /lib/systemd/system/tomcat.service ]; then
+   TOMCAT_PID=$(systemctl show --property=MainPID tomcat.service | sed 's/^MainPID=0*//')
+elif [ -e /usr/lib/systemd/system/tomcat.service ]; then
+   TOMCAT_PID=$(systemctl show --property=MainPID tomcat.service | sed 's/^MainPID=0*//')
+else
+   echo "No tomcat service found."
+   exit 0;
+fi
+
+if [ -x $LSOF ]; then
+    echo "Waiting for tomcat to be ready ..."
+    while [ -n "$TOMCAT_PID" ] ; do
+        $LSOF -t -i TCP:8005 | grep "^$TOMCAT_PID$" > /dev/null \
+        && $LSOF -t -i TCP:8009 | grep "^$TOMCAT_PID$" > /dev/null \
+        && break
+        sleep 1
+    done
+else
+    echo "No lsof found, not waiting for tomcat."
+fi
+}
+
+ensure_httpd_down() {
+    COUNT=0
+    LIMIT=10
+
+    while [ "$(pidof -c httpd | wc -w)" -gt 0 ] && [ "$COUNT" -lt "$LIMIT" ]
+    do
+       sleep 1
+       ((COUNT++))
+    done
+
+    if [ "$COUNT" -eq "$LIMIT" ]; then
+       killall -9 httpd
+       sleep 4
+    fi
+
+    return 0
+}
+
+case $1 in
+        ensure-httpd-down) ensure_httpd_down;;
+        wait-for-jabberd) wait_for_jabberd;;
+        wait-for-tomcat) wait_for_tomcat;;
+        wait-for-database) wait_for_database;;
+esac

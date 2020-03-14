@@ -1,0 +1,6 @@
+<rhn:toolbar base="h1" icon="header-package" imgAlt="package.jsp.alt">
+    <c:out value="${package_name}" />
+</rhn:toolbar>
+
+<rhn:dialogmenu mindepth="0" maxdepth="1"
+                definition="/WEB-INF/nav/package_detail.xml" renderer="com.redhat.rhn.frontend.nav.DialognavRenderer" />

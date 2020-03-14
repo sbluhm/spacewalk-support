@@ -1,0 +1,16 @@
+-- oracle equivalent source sha1 bd3b236fdb6ed059830dba2919f3befaba496a17
+
+create or replace function rhn_actioncf_name_mod_trig_fun() returns trigger as
+$$
+begin
+	new.modified := current_timestamp;
+	return new;
+end;
+$$ language plpgsql;
+
+create trigger
+rhn_actioncf_name_mod_trig
+before insert or update on rhnActionConfigFileName
+for each row
+execute procedure rhn_actioncf_name_mod_trig_fun();
+

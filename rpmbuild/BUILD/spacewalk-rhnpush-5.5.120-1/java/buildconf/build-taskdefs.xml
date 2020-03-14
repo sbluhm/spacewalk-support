@@ -1,0 +1,67 @@
+<project name="build-taskdefs">
+  <target name="init-ivy" depends="boot-deps" unless="installbuild">
+    <taskdef name="trycatch" classpathref="buildjars" classname="net.sf.antcontrib.logic.TryCatchTask" onerror="report"/>
+    <!-- in new versions of ivy the classpath starts with org.apache -->
+    <trycatch>
+      <try>
+        <taskdef name="ivy-retrieve"
+             classname="org.apache.ivy.ant.IvyRetrieve"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-configure"
+             classname="org.apache.ivy.ant.IvyConfigure"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-resolve"
+             classname="org.apache.ivy.ant.IvyResolve"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-publish"
+             classname="org.apache.ivy.ant.IvyPublish"
+             classpathref="bootjars"/>
+      </try>
+      <catch>
+        <taskdef name="ivy-retrieve"
+             classname="fr.jayasoft.ivy.ant.IvyRetrieve"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-configure"
+             classname="fr.jayasoft.ivy.ant.IvyConfigure"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-resolve"
+             classname="fr.jayasoft.ivy.ant.IvyResolve"
+             classpathref="bootjars"/>
+        <taskdef name="ivy-publish"
+             classname="fr.jayasoft.ivy.ant.IvyPublish"
+             classpathref="bootjars"/>
+      </catch>
+    </trycatch>
+  </target>
+
+  <target name="init-taskdefs" depends="link-jars,compile-internal"
+          unless="init-taskdefs.notrequired">
+    <!-- pull in checkstyle's properties defining its tasks -->
+    <taskdef resource="checkstyletask.properties"
+             classpathref="alljars" />
+
+    <!-- =================== Jspc Tasks ======================= -->
+    <taskdef name="jasper2"
+        classname="org.apache.jasper.JspC">
+             <classpath>
+                 <path refid="buildjars" />
+                 <!-- this configures commons logging properly for Jasper2 -->
+                 <pathelement
+                     location="${src.dir}/internal/src/com/redhat/rhn/internal/jasper2"/>
+             </classpath>
+    </taskdef>
+
+    <!-- =================== Ant Contrib Tasks ======================= -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"
+             classpathref="buildjars"/>
+
+    <taskdef name="foreach" classpathref="buildjars" classname="net.sf.antcontrib.logic.ForEach" onerror="report"/>
+
+    <property name="init-taskdefs.notrequired" value="true" />
+
+    <!-- ======================= EMMA Tasks ========================== -->
+    <taskdef resource="emma_ant.properties" classpathref="testjars" />
+
+  </target>
+
+</project>

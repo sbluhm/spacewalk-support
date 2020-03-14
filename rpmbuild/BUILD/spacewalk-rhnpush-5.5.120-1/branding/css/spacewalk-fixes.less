@@ -1,0 +1,27 @@
+/* fixing margin issue in Bootstrap 3 */
+
+@media (min-width: 768px) {
+  .row {
+  	margin-right: 0;
+  	margin-left: 0;
+  }
+}
+
+.form-horizontal .text {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 7px;
+}
+
+input[type="file"].form-control {
+    height: 100%;
+}
+
+div.form-control {
+    &:extend(.form-control[readonly]);
+}
+
+/* fix for checkbox icon alignment */
+div.checkbox.icon-wrapper i.fa {
+    width: .6em;
+}

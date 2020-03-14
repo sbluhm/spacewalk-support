@@ -1,0 +1,26 @@
+mkdir folder
+cp rpm folder
+cd folder
+rpm2cpio *.src.rpm | cpio -idmv --no-absolute-filenames
+
+-------------------------bs = build soruce, ba = build all
+dnf builddep *.spec
+\cp * ~/rpmbuild/SOURCES/; rpmbuild --undefine=_disable_source_fetch -ba *.spec
+
+rpmbuild -ba *.spec
+
+
+dnf builddep *.src.rpm 
+rpmbuild --rebuild *.src.rpm
+
+
+
+
+
+
+
+
+
+
+
+

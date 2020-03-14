@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.docbook.org/xml/4.5/docbookx.dtd">
+
+<preface>
+<title>Sample Scripts</title>
+
+<example>
+    <title>Perl Example</title>
+    <para>This Perl example shows the <function>system.listUserSystems</function> call being used to get a
+list of systems a user has access to. In the example below, the name of each system will be printed.</para>
+    <programlisting>#!/usr/bin/perl
+use Frontier::Client;
+
+my $HOST = 'spacewalk.example.com';
+my $user = 'username';
+my $pass = 'password';
+
+my $client = new Frontier::Client(url => "http://$HOST/rpc/api");
+my $session = $client->call('auth.login',$user, $pass);
+
+my $systems = $client->call('system.listUserSystems', $session);
+foreach my $system (@$systems) {
+   print $system->{'name'}."\n";
+}
+$client->call('auth.logout', $session);</programlisting>
+</example>
+
+<example>
+    <title>Python Example</title>
+    <para>Below is an example of the <function>user.listUsers</function> call being used. Only the login of each
+user is printed.</para>
+    <programlisting>#!/usr/bin/python
+import xmlrpclib
+
+SPACEWALK_URL = "http://spacewalk.example.com/rpc/api"
+SPACEWALK_LOGIN = "username"
+SPACEWALK_PASSWORD = "password"
+
+client = xmlrpclib.Server(SPACEWALK_URL, verbose=0)
+
+key = client.auth.login(SPACEWALK_LOGIN, SPACEWALK_PASSWORD)
+list = client.user.list_users(key)
+for user in list:
+  print user.get('login')
+
+client.auth.logout(key)</programlisting>
+    <para>The following code shows how to use date-time parameters. This code will schedule immediate installation of package rhnlib-2.5.22.9.el6.noarch to system with id 1000000001.</para>
+    <programlisting>#!/usr/bin/python
+from datetime import datetime
+import time
+import xmlrpclib
+
+MANAGER_URL = "http://manager.example.com/rpc/api"
+MANAGER_LOGIN = "username"
+MANAGER_PASSWORD = "password"
+
+client = xmlrpclib.Server(MANAGER_URL, verbose=0)
+
+key = client.auth.login(MANAGER_LOGIN, MANAGER_PASSWORD)
+package_list = client.packages.findByNvrea(key, 'rhnlib', '2.5.22', '9.el6', '', 'noarch')
+today = datetime.today()
+earliest_occurrence = xmlrpclib.DateTime(today)
+client.system.schedulePackageInstall(key, 1000000001, package_list[0]['id'], earliest_occurrence)
+
+client.auth.logout(key)</programlisting>
+</example>
+
+<example>
+    <title>Ruby Example</title>
+    <para>Below is an example of the <function>channel.listAllChannels</function> API call. List of channel labels is printed.</para>
+    <programlisting>#!/usr/bin/ruby
+require "xmlrpc/client"
+
+@MANAGER_URL = "http://manager.example.com/rpc/api"
+@MANAGER_LOGIN = "username"
+@MANAGER_PASSWORD = "password"
+
+@client = XMLRPC::Client.new2(@MANAGER_URL)
+
+@key = @client.call('auth.login', @MANAGER_LOGIN, @MANAGER_PASSWORD)
+channels = @client.call('channel.listAllChannels', @key)
+for channel in channels do
+   p channel["label"]
+end
+
+@client.call('auth.logout', @key)</programlisting>
+</example>
+</preface>

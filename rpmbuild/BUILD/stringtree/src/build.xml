@@ -1,0 +1,95 @@
+<project name="stringtree" default="cycle" basedir="..">
+
+	<property file="src/project.prp"/>
+	<property file="src/relnum.prp"/>
+	<property name="version" value="${version.major}.${version.minor}.${version.step}"/>
+
+	<target name="clean">
+		<mkdir dir="build"/><delete dir="build"/>
+	</target>
+
+	<path id="classpath">
+		<pathelement location="build/delivery"/>
+		<pathelement location="build/test"/>
+		<pathelement location="resources"/>
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement path="${java.class.path}"/>
+	</path>
+	
+    <target name ="dist-json">
+        <mkdir dir="build/delivery"/>
+        <javac srcdir="src/delivery/java/org/stringtree/json/" destdir="build/delivery/" compiler="javac1.4" source="1.4" target="1.4" />
+        <mkdir dir="dist"/>
+        <property name="jar.name" value="stringtree-json"/>
+        <jar jarfile="dist/${jar.name}-${version}.jar" includes="org/stringtree/json/**" basedir="build/delivery"/>
+    </target>
+
+	<target name="compile-delivery">
+	    <mkdir dir="build/delivery"/>
+		<javac srcdir="src/delivery/java" destdir="build/delivery" debug="on" compiler="javac1.4" source="1.4" target="1.4">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+	
+	<target name="compile-test">
+	    <mkdir dir="build/test"/>
+		<javac srcdir="src/test/java" destdir="build/test" debug="on" compiler="javac1.4" source="1.4" target="1.4">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="compile" depends="compile-delivery,compile-test"/>
+	
+	<target name="test">
+		<echo message="running ant test in dir ${basedir}/testfiles"/>
+		<junit fork="yes" haltonfailure="yes" printsummary="yes" dir="${basedir}/testfiles">
+			<test name="tests.LocalTests"/>
+			<classpath refid="classpath"/>
+			<formatter type="plain"/>
+		</junit>
+	</target>
+	
+	<target name="dist" depends="clean,compile">
+		<mkdir dir="dist"/>
+		<antcall target="dist-subproject">
+			<param name="jar.name" value="${project.name}"/>
+			<param name="subset" value="**"/>
+		</antcall>
+		<antcall target="dist-subproject">
+			<param name="jar.name" value="stringtree-json"/>
+			<param name="subset" value="org/stringtree/json/**"/>
+		</antcall>
+	</target>
+	
+	<target name="dist-subproject">
+	    <jar jarfile="dist/${jar.name}-${version}.jar" includes="${subset}" basedir="build/delivery"/>
+	    <copy file="dist/${jar.name}-${version}.jar" tofile="dist/${jar.name}.jar"/>
+	    <copy file="dist/${jar.name}.jar" todir="../repository"/>
+	</target>
+
+    <target name="backup">
+	  <tstamp/>
+	  <mkdir dir="dist"/>
+	  <zip destfile="../repository/${project.name}-${DSTAMP}-${TSTAMP}.zip">
+	    <zipfileset dir=".">
+	      <exclude name="dist/**"/>
+	      <exclude name="bin/**"/>
+	    </zipfileset>
+	  </zip>
+	</target>
+
+	<target name="export-src" depends="backup,clean">
+	    <zip destfile="dist/${project.name}-${version}-src.zip">
+	    	<zipfileset dir="src" prefix="${project.name}/src"/>
+	    	<zipfileset dir="testfiles" prefix="${project.name}/testfiles"/>
+	    	<zipfileset dir="resources" prefix="${project.name}/resources"/>
+		</zip>
+	    <copy file="dist/${project.name}-${version}-src.zip" tofile="dist/${project.name}-src.zip"/>
+	    <copy file="dist/${project.name}-src.zip" todir="../repository"/>
+	</target>
+	
+	<target name="cycle" depends="dist, export-src"/>
+	
+</project>

@@ -1,0 +1,4 @@
+Name: pyflakes
+Repository: https://github.com/PyCQA/pyflakes
+Bug-Database: https://github.com/pycqa/pyflakes/issues
+Bug-Submit: https://github.com/pycqa/pyflakes/issues/new

@@ -1,0 +1,11 @@
+%dir /usr/lib/debug
+%dir /usr/lib/debug/.dwz
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/lib64
+%dir /usr/lib/debug/usr/lib64/python3.6
+%dir /usr/lib/debug/usr/lib64/python3.6/site-packages
+%dir /usr/lib/debug/usr/lib64/python2.7
+%dir /usr/lib/debug/usr/lib64/python2.7/site-packages
+/usr/lib/debug/.dwz/python-dmidecode-3.12.2-16.el8.x86_64
+/usr/lib/debug/usr/lib64/python3.6/site-packages/dmidecodemod.cpython-36m-x86_64-linux-gnu.so-3.12.2-16.el8.x86_64.debug
+/usr/lib/debug/usr/lib64/python2.7/site-packages/dmidecodemod.so-3.12.2-16.el8.x86_64.debug

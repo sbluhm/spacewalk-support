@@ -1,0 +1,44 @@
+diff -up yum-3.4.3/yum/config.py.orig yum-3.4.3/yum/config.py
+--- yum-3.4.3/yum/config.py.orig	2017-03-22 19:51:54.287816405 +0100
++++ yum-3.4.3/yum/config.py	2017-03-22 19:54:47.582779907 +0100
+@@ -47,14 +47,11 @@ from misc import get_uuid, read_in_items
+ __pkgs_gpgcheck_default__ = False
+ __repo_gpgcheck_default__ = False
+ __payload_gpgcheck_default__ = False
+-__main_multilib_policy_default__ = 'all'
+-__main_failovermethod_default__ = 'roundrobin'
+-__main_installonly_limit_default__ = 0
+-__group_command_default__ = 'compat'
+-__exactarchlist_default__ = ['kernel', 'kernel-smp',
+-                             'kernel-hugemem', 'kernel-enterprise',
+-                             'kernel-bigmem',
+-                             'kernel-devel', 'kernel-PAE', 'kernel-PAE-debug']
++__main_multilib_policy_default__ = 'best'
++__main_failovermethod_default__ = 'priority'
++__main_installonly_limit_default__ = 3
++__group_command_default__ = 'objects'
++__exactarchlist_default__ = []
+ 
+ class Option(object):
+     """
+diff -up yum-3.4.3/docs/yum.conf.5.orig yum-3.4.3/docs/yum.conf.5
+--- yum-3.4.3/docs/yum.conf.5.orig	2017-03-22 19:52:59.025429202 +0100
++++ yum-3.4.3/docs/yum.conf.5	2017-03-22 19:53:41.624174414 +0100
+@@ -205,7 +205,7 @@ providing that is updated like any other
+ .IP
+ \fBinstallonly_limit \fR
+ Number of packages listed in installonlypkgs to keep installed at the same
+-time. Setting to 0 disables this feature. Default is '0'. Note that this
++time. Setting to 0 disables this feature. Default is '3'. Note that this
+ functionality used to be in the "installonlyn" plugin, where this option was
+ altered via tokeep.
+ Note that as of version 3.2.24, yum will now look in the yumdb for a installonly
+@@ -302,7 +302,7 @@ group, and won't remove those on "group
+ Running "yum upgrade" will also run "yum group upgrade" (thus. adding new
+ packages for all groups).
+ 
+-Default is: compat
++Default is: objects
+ 
+ .IP
+ \fBupgrade_group_objects_upgrade\fR

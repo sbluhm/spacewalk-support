@@ -1,0 +1,330 @@
+#!/bin/sh
+#
+# Debug utility: packages log files, and relevant debug information
+#                needed for full diagnosis of Spacewalk Server issues.
+#
+# Copyright (c) 2008--2018 Red Hat, Inc.
+#
+# This software is licensed to you under the GNU General Public License,
+# version 2 (GPLv2). There is NO WARRANTY for this software, express or
+# implied, including the implied warranties of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
+# along with this software; if not, see
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+#
+# Red Hat trademarks are not licensed under GPLv2. No permission is
+# granted to use or replicate Red Hat trademarks that are incorporated
+# in this software or its documentation.
+#
+
+
+if [ "$(id -u)" != "0" ] ; then
+  echo "This script must be run as root."
+  exit
+fi
+
+BASE_DIR=/tmp
+
+usage() {
+    echo "Usage:"
+    echo "$0 [OPTIONS]"
+    echo "Debug utility that packages log files and other information"
+    echo
+    echo "  OPTIONS:"
+    echo "    --help                Display usage and exit"
+    echo "    --dir                 Destination directory for the tarball ($BASE_DIR)"
+    exit $1
+}
+
+while [ ${#} -ne 0 ]; do
+    arg="$1"
+    case "$arg" in
+        --help)
+            usage 0
+            ;;
+        --dir)
+            shift
+            BASE_DIR=$1
+            ;;
+        --*)
+            echo "Unknown option $arg (use --help)"
+            exit 1
+            ;;
+        *)
+            echo "Too many arguments (use --help)"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+if [ ! -d "$BASE_DIR" ]; then
+    mkdir -p "$BASE_DIR"
+    [ $? != 0 ] && echo "Unable to create directory $BASE_DIR" && exit 1
+fi
+
+# Make sure BASE_DIR is not relative
+BASE_DIR=$(cd $BASE_DIR && pwd)
+
+DIR=$BASE_DIR/spacewalk-debug-$$/spacewalk-debug
+TARBALL=$BASE_DIR/spacewalk-debug.tar.bz2
+
+/bin/mkdir -p $DIR
+if [ $? != 0 ] ; then
+  echo "Unable to create directory $DIR"
+  exit
+fi
+
+chmod 700 $DIR
+cd $DIR
+
+echo "Collecting and packaging relevant diagnostic information."
+echo "Warning: this may take some time..."
+
+mkdir -p $DIR/conf/httpd
+mkdir -p $DIR/conf/tomcat
+mkdir -p $DIR/conf/cobbler
+mkdir -p $DIR/conf/rhn/sysconfig
+mkdir -p $DIR/httpd-logs
+mkdir -p $DIR/tomcat-logs
+mkdir -p $DIR/cobbler-logs
+mkdir -p $DIR/rhn-logs/rhn
+mkdir -p $DIR/config-defaults
+mkdir -p $DIR/kickstarts
+mkdir -p $DIR/database
+mkdir -p $DIR/cobbler-lib
+mkdir -p $DIR/tasko
+
+echo "    * copying configuration information"
+if [ -d /etc/httpd ]; then
+    cp -fsLrp /etc/httpd/conf* $DIR/conf/httpd
+elif [ -d /etc/apache2 ]; then
+    cp -fsLrp /etc/apache2/conf* $DIR/conf/httpd
+    cp -fsLrp /etc/apache2/vhosts* $DIR/conf/httpd
+fi
+cp -fsLrp /etc/rhn $DIR/conf/rhn
+# Find any current copies of rhn.conf/rhn.conf.orig and sanitize passwords
+sed -i 's/db_password.*/db_password = ***/g' $DIR/conf/rhn/rhn/rhn.conf*
+sed -i 's/server.satellite.http_proxy_password.*/server.satellite.http_proxy_password = ***/g' $DIR/conf/rhn/rhn/rhn.conf*
+cp -fsLrp /etc/sysconfig/rhn $DIR/conf/rhn/sysconfig
+# Find any rhn.conf files backup up by upgrades and sanitize passwords
+find $DIR/conf/rhn/sysconfig -name rhn.conf\* -exec sed -i 's/db_password.*/db_password = ***/g' {} \;
+find $DIR/conf/rhn/sysconfig -name rhn.conf\* -exec sed -i 's/server.satellite.http_proxy_password.*/server.satellite.http_proxy_password = ***/g' {} \;
+if [ -f /etc/tnsnames.ora ] ; then
+    cp -fsLrp /etc/tnsnames.ora $DIR/conf
+fi
+
+echo "    * copying logs"
+if [ -d /var/log/httpd ]; then
+    cp -fsLrp /var/log/httpd $DIR/httpd-logs
+elif [ -d /var/log/apache2 ]; then
+    cp -fsLrp /var/log/apache2 $DIR/httpd-logs
+fi
+
+# copy rhn logs
+if [ -d /var/log/rhn ]; then
+    cp -fsLrp  /var/log/rhn/{*log*,*.gz} $DIR/rhn-logs/rhn
+
+    # check for oracle dir
+    if [ -d /var/log/rhn/oracle ]; then
+        cp -fsLrp /var/log/rhn/oracle $DIR/rhn-logs/rhn
+    fi
+
+    # check for reposync dir
+    if [ -d /var/log/rhn/reposync ]; then
+        cp -fsLrp /var/log/rhn/reposync $DIR/rhn-logs/rhn
+    fi
+
+    # check for search dir
+    if [ -d /var/log/rhn/search ]; then
+        cp -fsLrp /var/log/rhn/search $DIR/rhn-logs/rhn
+    fi
+fi
+
+DB_INSTALL_LOG=/var/log/rhn/rhn-database-installation.log
+if [ -f "$DB_INSTALL_LOG" ] ; then
+    mkdir -p $DIR/tmp
+    cp -fsLrp "$DB_INSTALL_LOG" $DIR/tmp/
+fi
+
+# grab jabberd info if it exists (it should)
+if [ -d /etc/jabberd ]; then
+    mkdir -p $DIR/jabberd
+    cp -fsLrp /etc/jabberd $DIR/jabberd
+fi
+
+# tomcat for spacewalk 400+
+for tomcat in tomcat tomcat5 tomcat6 ; do
+  if [ -d /etc/$tomcat ]; then
+    cp -fsLrp /etc/$tomcat $DIR/conf/tomcat
+  fi
+  if [ -d /var/log/$tomcat ]; then
+    cp -fsLrp /var/log/$tomcat $DIR/tomcat-logs
+  fi
+done
+
+# copying the /usr/share/rhn/config-defaults
+echo "    * copying config-defaults files"
+if [ -d /usr/share/rhn/config-defaults ]; then
+    cp -fsLrp /usr/share/rhn/config-defaults/* $DIR/config-defaults
+fi
+
+#cobbler stuff
+echo "    * copying cobbler files"
+if [ -d /etc/cobbler ]; then
+    cp -fsLrp /etc/cobbler/* $DIR/conf/cobbler
+fi
+if [ -d /var/log/cobbler ]; then
+   cp -fsLrp /var/log/cobbler/* $DIR/cobbler-logs
+fi
+if [ -d /var/lib/cobbler ]; then
+   cp -fsLrp /var/lib/cobbler/snippets $DIR/cobbler-lib/
+   cp -fsLrp /var/lib/cobbler/config $DIR/cobbler-lib/
+   cp -fsLrp /var/lib/cobbler/kickstarts $DIR/cobbler-lib/
+   cp -fsLrp /var/lib/cobbler/triggers $DIR/cobbler-lib/
+fi
+if [ -d /var/lib/rhn/kickstarts ]; then
+   cp -fsLrp /var/lib/rhn/kickstarts/* $DIR/kickstarts/
+fi
+
+# ssl-build
+if [ -d /root/ssl-build ] ; then
+    echo "    * copying ssl-build"
+    mkdir -p $DIR/ssl-build
+    # NOTE: cp -a == cp -pRd
+    cp -fsLrp /root/ssl-build/* $DIR/ssl-build 2> /dev/null
+fi
+
+# /etc/sudoers
+if [ -f /etc/sudoers -o -d /etc/sudoers.d ] ; then
+	echo "    * copying /etc/sudoers*"
+	cp -fsLrp /etc/sudoers* $DIR/conf
+fi
+
+# /etc/passwd
+if [ -f /etc/passwd ] ; then
+	echo "    * copying apache, postgres, tomcat entries from /etc/passwd"
+	getent passwd apache wwwrun tomcat postgres > $DIR/conf/passwd
+fi
+
+# /etc/group
+if [ -f /etc/group ] ; then
+	echo "    * copying apache, postgres, tomcat entries from /etc/group"
+	getent group apache www tomcat postgres > $DIR/conf/group
+fi
+
+echo "    * querying RPM database (versioning of Spacewalk, etc.)"
+rpm -qa --last > $DIR/rpm-manifest
+rpm -qa | sort > $DIR/rpm-manifest-clean
+
+echo "    * querying schema version, database charactersets and database"
+/usr/bin/rhn-schema-version > $DIR/database-schema-version
+/usr/bin/rhn-charsets > $DIR/database-character-sets
+if [ -f /usr/bin/db-control ] && [ "$(spacewalk-cfg-get db_backend)" = "postgresql" ] ; then
+    /usr/bin/db-control report > $DIR/db-control-report
+fi
+
+if [ -f /usr/bin/spacewalk-sql ] ; then
+    USERS_TZ_LC_SQL="""
+        SELECT w.login as login,
+               tz.display_name as timezone,
+               ui.preferred_locale as locale
+          FROM web_contact w
+               inner join rhnuserinfo ui on ui.user_id = w.id
+               left outer join rhntimezone tz on ui.timezone_id = tz.id
+        ORDER BY login;
+    """
+    echo "    * querying users timezone and localization preferences"
+    echo $USERS_TZ_LC_SQL | /usr/bin/spacewalk-sql --select-mode - > $DIR/users-preferences
+fi
+
+echo "    * get diskspace available"
+df -h > $DIR/diskinfo
+
+echo "    * get database statistics"
+/usr/bin/rhn-db-stats $DIR/database/db-stats.log
+
+echo "    * get schema statistics"
+/usr/bin/rhn-schema-stats $DIR/database/schema-stats.log
+
+# alert.log
+if [ -f /rhnsat/admin/rhnsat/bdump/alert_rhnsat.log ] ; then
+	echo "    * copying alert_rhnsat.log"
+	cp -fsLrp /rhnsat/admin/rhnsat/bdump/alert_rhnsat.log $DIR/database/
+fi
+
+PGSQL_ROOT=""
+MAX_PGSQL_LOGS_SIZE="6291456" #6 GB
+rpm -q postgresql92-postgresql > /dev/null
+if [ $? == 0 ]; then
+	PGSQL_ROOT="/opt/rh/postgresql92/root"
+fi
+
+# PostgreSQL logs
+if [ -f $PGSQL_ROOT/var/lib/pgsql/pgstartup.log ] ; then
+	echo "    * copying pgstartup.log"
+	cp -fsLrp $PGSQL_ROOT/var/lib/pgsql/pgstartup.log $DIR/database
+fi
+if [ -f /var/lib/pgsql/initlog ] ; then
+       echo "    * copying initlog"
+       cp -fsLrp /var/lib/pgsql/initlog $DIR/database
+fi
+ls $PGSQL_ROOT/var/lib/pgsql/data/*.conf 2>/dev/null | xargs -I file cp -fsLrp file $DIR/database
+
+# compress postgres logs
+if [ -d $PGSQL_ROOT/var/lib/pgsql/data/pg_log ]; then
+
+    PGSQL_LOGS_SIZE=$(du -s $PGSQL_ROOT/var/lib/pgsql/data/pg_log | cut -d'/' -f1)
+    if [ $PGSQL_LOGS_SIZE -gt $MAX_PGSQL_LOGS_SIZE ]; then
+        echo "    * $PGSQL_ROOT/var/lib/pgsql/data/pg_log exceeded the maximum size allowed. Please copy it separately."
+        echo "PostgreSQL logs exceeded the maximum size of $MAX_PGSQL_LOGS_SIZE bytes" >> $DIR/database/warning
+    else
+        for pg_log in $(ls $PGSQL_ROOT/var/lib/pgsql/data/pg_log/* 2>/dev/null); do
+            cat $pg_log | gzip > $DIR/database/$(basename $pg_log).gz
+        done
+    fi
+fi
+
+if [ -d /var/log/spacewalk/schema-upgrade ] ; then
+	echo "    * copying schema upgrade logs"
+	mkdir -p $DIR/schema-upgrade-logs
+	cp -fsLrp /var/log/spacewalk/schema-upgrade/* $DIR/schema-upgrade-logs
+fi
+
+if [ "$(spacewalk-cfg-get db_backend)" = "postgresql" ] ; then
+    echo "    * copying Postgresql procedures information"
+    echo "select proname, prosrc from pg_catalog.pg_proc;" | /usr/bin/spacewalk-sql --select-mode - &> $DIR/database/pg_catalog.pg_proc.log
+fi
+
+if [ -f /var/log/audit/audit.log ] ; then
+	echo "    * copying audit.log"
+	mkdir -p $DIR/audit-log
+	cp -fsLrp /var/log/audit/audit.log $DIR/audit-log
+fi
+
+if [ -d /var/log/rhn/tasko/sat ] ; then
+        echo "    * copying tasko/sat"
+        cp -fsLrp /var/log/rhn/tasko/sat $DIR/tasko
+fi
+
+echo "    * timestamping"
+echo "Spacewalk debug created on $(date)" > $DIR/timestamp
+
+echo "    * creating tarball (may take some time): $TARBALL"
+# 209620 - satellite-debug creates world readable output
+# set tarball premissions *before* writing data
+# exclude private keys
+install -m 600 /dev/null $TARBALL
+tar -cjf $TARBALL \
+    -C $(dirname $DIR) \
+    --exclude "*PRIVATE*" \
+    --exclude "server.key*" \
+    --exclude "server.pem*" \
+    --exclude "rhn-org-httpd-ssl*" \
+    $(basename $DIR)
+
+echo "    * removing temporary debug tree"
+rm -Rf $(echo $DIR | sed -e 's/\/[^\/]*$//g')
+
+echo
+echo "Debug dump created, stored in $TARBALL"

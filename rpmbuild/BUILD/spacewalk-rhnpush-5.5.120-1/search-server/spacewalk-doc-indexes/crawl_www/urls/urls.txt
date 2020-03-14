@@ -1,0 +1,7 @@
+https://github.com/spacewalkproject/spacewalk/wiki/ReleaseNotes28
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/installation_guide
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/proxy_installation_guide
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/client_configuration_guide
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/user_guide
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/getting_started_guide
+https://access.redhat.com/documentation/en-us/red_hat_satellite/5.8/html/api_guide

@@ -1,0 +1,4 @@
+#!/usr/libexec/platform-python -s
+from pylint import epylint
+
+epylint.Run()

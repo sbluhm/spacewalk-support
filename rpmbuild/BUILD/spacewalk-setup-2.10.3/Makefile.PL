@@ -1,0 +1,38 @@
+use strict;
+use warnings;
+use ExtUtils::MakeMaker;
+
+WriteMakefile(
+    NAME                => 'Spacewalk::Setup',
+    AUTHOR              => 'Devan Goodwin <dgoodwin@redhat.com>',
+    VERSION_FROM        => 'lib/Spacewalk/Setup.pm',
+    ABSTRACT_FROM       => 'lib/Spacewalk/Setup.pm',
+    PL_FILES            => {},
+    EXE_FILES           => ['bin/spacewalk-setup',
+                            'bin/cobbler20-setup',
+                            'bin/spacewalk-make-mount-points',
+                            'bin/spacewalk-setup-cobbler',
+                            'bin/spacewalk-setup-tomcat',
+                            'bin/spacewalk-setup-httpd',
+                            'bin/spacewalk-setup-sudoers',
+                            'bin/spacewalk-setup-ipa-authentication',
+                            'bin/spacewalk-setup-db-ssl-certificates'],
+    PREREQ_PM => {
+        'Test::More' => 0,
+    },
+    MAN1PODS		=> { 'lib/Spacewalk/Setup.pm' => '$(INST_MAN1DIR)/spacewalk-setup.$(MAN1EXT)',
+        'bin/cobbler20-setup' => '$(INST_MAN1DIR)/cobbler20-setup.$(MAN1EXT)',
+        'bin/spacewalk-setup-cobbler' => '$(INST_MAN1DIR)/spacewalk-setup-cobbler.$(MAN1EXT)',
+        'bin/spacewalk-setup-sudoers' => '$(INST_MAN1DIR)/spacewalk-setup-sudoers.$(MAN1EXT)',
+			},
+    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean               => { FILES => 'Spacewalk-Setup-*' },
+);
+
+package MY;
+sub tools_other {
+	my $self = shift;
+	my $ret = $self->SUPER::tools_other(@_);
+	$ret =~ s/^(FIXIN\b.+)$/## $1\nFIXIN = \$(PERLRUN) -e 1/m;
+	return $ret;
+}

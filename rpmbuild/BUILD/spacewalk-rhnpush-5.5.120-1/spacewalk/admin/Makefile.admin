@@ -1,0 +1,88 @@
+#
+# Copyright (c) 2008--2012 Red Hat, Inc.
+#
+# This software is licensed to you under the GNU General Public License,
+# version 2 (GPLv2). There is NO WARRANTY for this software, express or
+# implied, including the implied warranties of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
+# along with this software; if not, see
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+#
+# Red Hat trademarks are not licensed under GPLv2. No permission is
+# granted to use or replicate Red Hat trademarks that are incorporated
+# in this software or its documentation.
+#
+#
+# Makefile for Red Hat Satellite admin scripts
+#
+
+BINDIR	  = /usr/bin
+SBINDIR   = /usr/sbin
+CONFDIR   = /etc/rhn
+GPGKEYDIR = /usr/share/rhn
+SYSTEMDDIR = /usr/lib/systemd/system
+
+VERSION = $(shell echo `awk '{ print $$1 }' version`)
+
+PERL_DEST   = $(PREFIX)/$(BINDIR)
+SBIN_DEST   = $(PREFIX)/$(SBINDIR)
+CONF_DEST   = $(PREFIX)/$(CONFDIR)
+GPGKEY_DEST = $(PREFIX)/$(GPGKEYDIR)
+SYSTEMD_DEST = $(PREFIX)/$(SYSTEMDDIR)
+
+PERL_SCRIPTS = rhn-config-satellite.pl \
+               rhn-config-schema.pl \
+               rhn-deploy-ca-cert.pl \
+               rhn-install-ssl-cert.pl \
+               rhn-generate-pem.pl
+
+SBIN_SCRIPTS = rhn-sat-restart-silent spacewalk-service spacewalk-startup-helper
+
+CONF_FILES = service-list
+
+GPGKEY_FILES = RHN-GPG-KEY
+
+SYSTEMD_FILES = spacewalk.target spacewalk-wait-for-tomcat.service \
+		spacewalk-wait-for-jabberd.service
+
+BIN_INSTALL    = install -m 755
+CONF_INSTALL   = install -m 644
+GPGKEY_INSTALL = install -m 644
+SYSTEMD_INSTALL = install -m 644
+DIR_INSTALL    = install -d -m 755
+
+# install scripts
+all:
+
+install: $(PERL_SCRIPTS) $(PERL_DEST) $(CONF_FILES) $(CONF_DEST) $(GPGKEY_FILES) $(GPGKEY_DEST) $(SBIN_SCRIPTS) $(SBIN_DEST)
+	$(BIN_INSTALL) $(PERL_SCRIPTS) $(PERL_DEST)
+	$(CONF_INSTALL) $(CONF_FILES) $(CONF_DEST)
+	$(GPGKEY_INSTALL) $(GPGKEY_FILES) $(GPGKEY_DEST)
+	$(BIN_INSTALL) $(SBIN_SCRIPTS) $(SBIN_DEST)
+
+install_systemd: $(SYSTEMD_DEST) $(SYSTEMD_FILES)
+	$(SYSTEMD_INSTALL) $(SYSTEMD_FILES) $(SYSTEMD_DEST)
+
+$(PERL_DEST):
+	$(DIR_INSTALL) $@
+
+$(CONF_DEST):
+	$(DIR_INSTALL) $@
+
+$(GPGKEY_DEST):
+	$(DIR_INSTALL) $@
+
+$(SBIN_DEST):
+	$(DIR_INSTALL) $@
+
+$(SYSTEMD_DEST):
+	$(DIR_INSTALL) $@
+
+clean::
+	@rm -fv *~ *.rpm *.tar.gz
+	@find . -name .\#\* -exec rm -fv {} \;
+
+tardist: clean
+	rm -Rfv /tmp/rhn-satellite-admin-$(VERSION)
+	cp -fapRdv . /tmp/rhn-satellite-admin-$(VERSION)
+	tar zcfv rhn-satellite-admin-$(VERSION).tar.gz --exclude CVS -C /tmp rhn-satellite-admin-$(VERSION)

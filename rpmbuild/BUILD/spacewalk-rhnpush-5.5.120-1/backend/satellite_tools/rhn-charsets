@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $UID != "0" ]; then
+  echo "ERROR: must be root to execute"
+  exit 1
+fi
+
+BACKEND=$( spacewalk-cfg-get db_backend )
+
+if [ $BACKEND == 'oracle' ]; then
+	echo "SELECT parameter, value from nls_database_parameters where parameter in ( 'NLS_CHARACTERSET', 'NLS_NCHAR_CHARACTERSET' );" | spacewalk-sql --select-mode -
+elif [ $BACKEND == 'postgresql' ]; then
+	echo 'show server_encoding; show client_encoding;' | spacewalk-sql --select-mode -
+else
+	echo "Unknown database backend [$BACKEND]"
+	exit 1
+fi
+

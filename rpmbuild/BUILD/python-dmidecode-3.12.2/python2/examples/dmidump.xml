@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmidecode>
+  <BIOSinfo dmispec="3.3.1" type="0" handle="0x0000" size="24">
+    <DMIdescription>BIOS Information</DMIdescription>
+    <Vendor>Dell Inc.</Vendor>
+    <Version>A05</Version>
+    <ReleaseDate>05/24/2007</ReleaseDate>
+    <Address>0xf0000</Address>
+    <RuntimeSize flags="0x10000" unit="KB">64</RuntimeSize>
+    <ROMsize unit="KB">1024</ROMsize>
+    <Characteristics level="0" dmispec="3.3.1.1" flags="0x3c299e80">
+      <flags>
+        <flag enabled="0">ISA is supported</flag>
+        <flag enabled="0">MCA is supported</flag>
+        <flag enabled="0">EISA is supported</flag>
+        <flag enabled="1">PCI is supported</flag>
+        <flag enabled="0">PC Card (PCMCIA) is supported</flag>
+        <flag enabled="1">PNP is supported</flag>
+        <flag enabled="1">APM is supported</flag>
+        <flag enabled="1">BIOS is upgradeable</flag>
+        <flag enabled="1">BIOS shadowing is allowed</flag>
+        <flag enabled="0">VLB is supported</flag>
+        <flag enabled="0">ESCD support is available</flag>
+        <flag enabled="1">Boot from CD is supported</flag>
+        <flag enabled="1">Selectable boot is supported</flag>
+        <flag enabled="0">BIOS ROM is socketed</flag>
+        <flag enabled="0">Boot from PC Card (PCMCIA) is supported</flag>
+        <flag enabled="1">EDD is supported</flag>
+        <flag enabled="0">Japanese floppy for NEC 9800 1.2 MB is supported (int 13h)</flag>
+        <flag enabled="1">Japanese floppy for Toshiba 1.2 MB is supported (int 13h)</flag>
+        <flag enabled="0">5.25"/360 KB floppy services are supported (int 13h)</flag>
+        <flag enabled="0">5.25"/1.2 MB floppy services are supported (int 13h)</flag>
+        <flag enabled="0">3.5"/720 KB floppy services are supported (int 13h)</flag>
+        <flag enabled="0">3.5"/2.88 MB floppy services are supported (int 13h)</flag>
+        <flag enabled="1">Print screen service is supported (int 5h)</flag>
+        <flag enabled="1">8042 keyboard services are supported (int 9h)</flag>
+        <flag enabled="1">Serial services are supported (int 14h)</flag>
+        <flag enabled="1">Printer services are supported (int 17h)</flag>
+        <flag enabled="0">CGA/mono video services are supported (int 10h)</flag>
+        <flag enabled="0">NEC PC-98</flag>
+      </flags>
+    </Characteristics>
+    <Characteristics level="x1" dmispec="3.3.1.2.1" flags="0x0013">
+      <characteristic enabled="1">ACPI</characteristic>
+      <characteristic enabled="1">USB legacy</characteristic>
+      <characteristic enabled="0">AGP</characteristic>
+      <characteristic enabled="0">I2O boot</characteristic>
+      <characteristic enabled="1">LS-120 boot</characteristic>
+      <characteristic enabled="0">ATAPI Zip drive boot</characteristic>
+      <characteristic enabled="0">IEEE 1394 boot</characteristic>
+      <characteristic enabled="0">Smart battery</characteristic>
+    </Characteristics>
+    <Characteristics level="x2" dmispec="3.3.1.2.2" flags="0x0007">
+      <characteristic enabled="1">BIOS boot specification</characteristic>
+      <characteristic enabled="1">Function key-initiated network boot</characteristic>
+      <characteristic enabled="1">Targeted content distribution</characteristic>
+    </Characteristics>
+    <BIOSrevision>2.0</BIOSrevision>
+  </BIOSinfo>
+  <SystemInfo dmispec="3.3.2" type="1" handle="0x0100" size="27">
+    <DMIdescription>System Information</DMIdescription>
+    <Manufacturer>Dell Inc.</Manufacturer>
+    <ProductName>Precision WorkStation 490</ProductName>
+    <Version>Not Specified</Version>
+    <SerialNumber>BLVX13J</SerialNumber>
+    <SystemUUID dmispec="3.3.2">44454c4c-4c00-1056-8058-c2c04f31334a</SystemUUID>
+    <SystemWakeUpType dmispec="3.3.2.1" flags="0x0006">Power Switch</SystemWakeUpType>
+    <SKUnumber>Not Specified</SKUnumber>
+    <Family>Not Specified</Family>
+  </SystemInfo>
+  <BaseBoardInfo dmispec="3.3.3" type="2" handle="0x0200" size="8">
+    <DMIdescription>Base Board Information</DMIdescription>
+    <Manufacturer>Dell Inc.</Manufacturer>
+    <ProductName>0GU083</ProductName>
+    <Version>A00</Version>
+    <SerialNumber>..CN1374076601D8.</SerialNumber>
+  </BaseBoardInfo>
+  <ChassisInfo dmispec="3.3.4" type="3" handle="0x0300" size="13">
+    <DMIdescription>Chassis Information</DMIdescription>
+    <Manufacturer>Dell Inc.</Manufacturer>
+    <ChassisType dmispec="3.3.4.1" flags="0x0007" available="1">Tower</ChassisType>
+    <ChassisLock dmispec="3.3.4" flags="0x0000">Not Present</ChassisLock>
+    <Version>Not Specified</Version>
+    <SerialNumber>BLVX13J</SerialNumber>
+    <AssetTag></AssetTag>
+    <ChassisStates>
+      <BootUp dmispec="3.3.4.2" flags="0x0003">Safe</BootUp>
+      <PowerSupply dmispec="3.3.4.2" flags="0x0003">Safe</PowerSupply>
+      <Thermal dmispec="3.3.4.2" flags="0x0003">Safe</Thermal>
+    </ChassisStates>
+    <SecurityStatus dmispec="3.3.4.3" flags="0x0003">None</SecurityStatus>
+  </ChassisInfo>
+  <ProcessorInfo dmispec="3.3.5" type="4" populated="1" handle="0x0400" size="40">
+    <DMIdescription>Processor Information</DMIdescription>
+    <SocketDesignation>Microprocessor</SocketDesignation>
+    <Type flags="0x0003">Central Processor</Type>
+    <Family dmispec="3.3.3.5" flags="0x00b3">Xeon</Family>
+    <CPUCore>
+      <ID>f6 06 00 00 ff fb eb bf</ID>
+      <Signature>Type 0, Family 6, Model 15, Stepping 6</Signature>
+      <cpu_flags>
+        <flag available="1" flag="FPU">FPU (Floating-point unit on-chip)</flag>
+        <flag available="1" flag="VME">VME (Virtual mode extension)</flag>
+        <flag available="1" flag="DE">DE (Debugging extension)</flag>
+        <flag available="1" flag="PSE">PSE (Page size extension)</flag>
+        <flag available="1" flag="TSC">TSC (Time stamp counter)</flag>
+        <flag available="1" flag="MSR">MSR (Model specific registers)</flag>
+        <flag available="1" flag="PAE">PAE (Physical address extension)</flag>
+        <flag available="1" flag="MCE">MCE (Machine check exception)</flag>
+        <flag available="1" flag="CX8">CX8 (CMPXCHG8 instruction supported)</flag>
+        <flag available="1" flag="APIC">APIC (On-chip APIC hardware supported)</flag>
+        <flag available="1" flag="SEP">SEP (Fast system call)</flag>
+        <flag available="1" flag="MTRR">MTRR (Memory type range registers)</flag>
+        <flag available="1" flag="PGE">PGE (Page global enable)</flag>
+        <flag available="1" flag="MCA">MCA (Machine check architecture)</flag>
+        <flag available="1" flag="CMOV">CMOV (Conditional move instruction supported)</flag>
+        <flag available="1" flag="PAT">PAT (Page attribute table)</flag>
+        <flag available="1" flag="PSE-36">PSE-36 (36-bit page size extension)</flag>
+        <flag available="0" flag="PSN">PSN (Processor serial number present and enabled)</flag>
+        <flag available="1" flag="CLFSH">CLFLUSH (CLFLUSH instruction supported)</flag>
+        <flag available="1" flag="DS">DS (Debug store)</flag>
+        <flag available="1" flag="ACPI">ACPI (ACPI supported)</flag>
+        <flag available="1" flag="MMX">MMX (MMX technology supported)</flag>
+        <flag available="1" flag="FXSR">FXSR (Fast floating-point save and restore)</flag>
+        <flag available="1" flag="SSE">SSE (Streaming SIMD extensions)</flag>
+        <flag available="1" flag="SSE2">SSE2 (Streaming SIMD extensions 2)</flag>
+        <flag available="1" flag="SS">SS (Self-snoop)</flag>
+        <flag available="1" flag="HTT">HTT (Hyper-threading technology)</flag>
+        <flag available="1" flag="TM">TM (Thermal monitor supported)</flag>
+        <flag available="0" flag="IA64">IA64 (IA64 capabilities)</flag>
+        <flag available="1" flag="PBE">PBE (Pending break enabled)</flag>
+      </cpu_flags>
+    </CPUCore>
+    <Manufacturer>
+      <Vendor>Intel</Vendor>
+      <Version>Not Specified</Version>
+    </Manufacturer>
+    <Voltages dmispec="3.3.5.4" flags="0x0092">
+      <Voltage unit="V">1.8</Voltage>
+    </Voltages>
+    <Frequencies>
+      <ExternalClock>1066</ExternalClock>
+      <MaxSpeed>3800</MaxSpeed>
+      <CurrentSpeed>1600</CurrentSpeed>
+    </Frequencies>
+    <Populated flags="0x0001">Enabled</Populated>
+    <Upgrade dmispec="3.3.5.5" flags="0x0004">ZIF Socket</Upgrade>
+    <Cache>
+      <Level level="1" ver="0x0203" provided="1" available="1" handle="0x0700"/>
+      <Level level="2" ver="0x0203" provided="1" available="1" handle="0x0701"/>
+      <Level level="3" ver="0x0203" flags="0xffff" provided="0" available="1"/>
+    </Cache>
+    <SerialNumber>Not Specified</SerialNumber>
+    <AssetTag>Not Specified</AssetTag>
+    <PartNumber>Not Specified</PartNumber>
+    <Cores>
+      <CoreCount>2</CoreCount>
+      <CoresEnabled>2</CoresEnabled>
+      <ThreadCount>2</ThreadCount>
+      <Characteristics dmispec="3.3.5.9" flags="0x0004">
+        <Flag>64-bit capable</Flag>
+      </Characteristics>
+    </Cores>
+  </ProcessorInfo>
+  <ProcessorInfo dmispec="3.3.5" type="4" populated="0" handle="0x0401" size="40">
+    <DMIdescription>Processor Information</DMIdescription>
+    <SocketDesignation>Microprocessor</SocketDesignation>
+    <Type flags="0x0003">Central Processor</Type>
+    <Family dmispec="3.3.3.5" flags="0x00b3">Xeon</Family>
+    <CPUCore>
+      <ID>00 00 00 00 00 00 00 00</ID>
+      <Signature>Type 0, Family 0, Model 0, Stepping 0</Signature>
+      <cpu_flags/>
+    </CPUCore>
+    <Manufacturer>
+      <Vendor>Intel</Vendor>
+      <Version>Not Specified</Version>
+    </Manufacturer>
+    <Voltages dmispec="3.3.5.4" flags="0x0092">
+      <Voltage unit="V">1.8</Voltage>
+    </Voltages>
+    <Frequencies>
+      <ExternalClock>100</ExternalClock>
+      <MaxSpeed>3800</MaxSpeed>
+      <CurrentSpeed>-1</CurrentSpeed>
+    </Frequencies>
+    <Populated>No</Populated>
+    <Upgrade dmispec="3.3.5.5" flags="0x0004">ZIF Socket</Upgrade>
+    <Cache>
+      <Level level="1" ver="0x0203" provided="1" available="1" handle="0x0702"/>
+      <Level level="2" ver="0x0203" provided="1" available="1" handle="0x0703"/>
+      <Level level="3" ver="0x0203" flags="0xffff" provided="0" available="1"/>
+    </Cache>
+    <SerialNumber>Not Specified</SerialNumber>
+    <AssetTag>Not Specified</AssetTag>
+    <PartNumber>Not Specified</PartNumber>
+    <Cores>
+      <CoreCount>1</CoreCount>
+      <CoresEnabled>1</CoresEnabled>
+      <ThreadCount>1</ThreadCount>
+      <Characteristics dmispec="3.3.5.9" flags="0x0000"/>
+    </Cores>
+  </ProcessorInfo>
+  <DMImessage type="5" notfound="1">DMI/SMBIOS type 0x05 is not found on this hardware</DMImessage>
+  <DMImessage type="6" notfound="1">DMI/SMBIOS type 0x06 is not found on this hardware</DMImessage>
+  <CacheInfo dmispec="3.3.8" type="7" Enabled="1" Socketed="0" Level="1" handle="0x0700" size="19">
+    <DMIdescription>Cache Information</DMIdescription>
+    <SocketDesignation>Not Specified</SocketDesignation>
+    <OperationalMode flags="0x0001">Write Back</OperationalMode>
+    <CacheLocation dmispec="3.3.8" flags="0x0000">Internal</CacheLocation>
+    <InstalledSize dmispec="3.3.8" flags="0x0020" unit="KB">32</InstalledSize>
+    <MaximumSize dmispec="3.3.8" flags="0x0020" unit="KB">32</MaximumSize>
+    <SupportedSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </SupportedSRAMtypes>
+    <InstalledSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </InstalledSRAMtypes>
+    <Speed code="0x0000"/>
+    <ErrorCorrectionType dmispec="3.3.8.3" flags="0x0003">None</ErrorCorrectionType>
+    <SystemType dmispec="3.3.8.4" flags="0x0004">Data</SystemType>
+    <Associativity dmispec="3.3.8.5" flags="0x0007">8-way Set-associative</Associativity>
+  </CacheInfo>
+  <CacheInfo dmispec="3.3.8" type="7" Enabled="1" Socketed="0" Level="2" handle="0x0701" size="19">
+    <DMIdescription>Cache Information</DMIdescription>
+    <SocketDesignation>Not Specified</SocketDesignation>
+    <OperationalMode flags="0x0002">Varies With Memory Address</OperationalMode>
+    <CacheLocation dmispec="3.3.8" flags="0x0000">Internal</CacheLocation>
+    <InstalledSize dmispec="3.3.8" flags="0x1000" unit="KB">4096</InstalledSize>
+    <MaximumSize dmispec="3.3.8" flags="0x1000" unit="KB">4096</MaximumSize>
+    <SupportedSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </SupportedSRAMtypes>
+    <InstalledSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </InstalledSRAMtypes>
+    <Speed code="0x0000"/>
+    <ErrorCorrectionType dmispec="3.3.8.3" flags="0x0005">Single-bit ECC</ErrorCorrectionType>
+    <SystemType dmispec="3.3.8.4" flags="0x0005">Unified</SystemType>
+    <Associativity dmispec="3.3.8.5" flags="0x0008">16-way Set-associative</Associativity>
+  </CacheInfo>
+  <CacheInfo dmispec="3.3.8" type="7" Enabled="1" Socketed="0" Level="1" handle="0x0702" size="19">
+    <DMIdescription>Cache Information</DMIdescription>
+    <SocketDesignation>Not Specified</SocketDesignation>
+    <OperationalMode flags="0x0001">Write Back</OperationalMode>
+    <CacheLocation dmispec="3.3.8" flags="0x0000">Internal</CacheLocation>
+    <InstalledSize dmispec="3.3.8" flags="0x0020" unit="KB">32</InstalledSize>
+    <MaximumSize dmispec="3.3.8" flags="0x0020" unit="KB">32</MaximumSize>
+    <SupportedSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </SupportedSRAMtypes>
+    <InstalledSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </InstalledSRAMtypes>
+    <Speed code="0x0000"/>
+    <ErrorCorrectionType dmispec="3.3.8.3" flags="0x0003">None</ErrorCorrectionType>
+    <SystemType dmispec="3.3.8.4" flags="0x0004">Data</SystemType>
+    <Associativity dmispec="3.3.8.5" flags="0x0007">8-way Set-associative</Associativity>
+  </CacheInfo>
+  <CacheInfo dmispec="3.3.8" type="7" Enabled="1" Socketed="0" Level="2" handle="0x0703" size="19">
+    <DMIdescription>Cache Information</DMIdescription>
+    <SocketDesignation>Not Specified</SocketDesignation>
+    <OperationalMode flags="0x0002">Varies With Memory Address</OperationalMode>
+    <CacheLocation dmispec="3.3.8" flags="0x0000">Internal</CacheLocation>
+    <InstalledSize dmispec="3.3.8" flags="0x1000" unit="KB">4096</InstalledSize>
+    <MaximumSize dmispec="3.3.8" flags="0x1000" unit="KB">4096</MaximumSize>
+    <SupportedSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </SupportedSRAMtypes>
+    <InstalledSRAMtypes dmispec="3.3.8.2" flags="0x0001">
+      <CacheType index="1">Other</CacheType>
+    </InstalledSRAMtypes>
+    <Speed code="0x0000"/>
+    <ErrorCorrectionType dmispec="3.3.8.3" flags="0x0005">Single-bit ECC</ErrorCorrectionType>
+    <SystemType dmispec="3.3.8.4" flags="0x0005">Unified</SystemType>
+    <Associativity dmispec="3.3.8.5" flags="0x0008">16-way Set-associative</Associativity>
+  </CacheInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0800" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">PARALLEL</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0005" type="external">DB-25 female</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0002">Parallel Port PS/2</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0801" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">SERIAL1</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0008" type="external">DB-9 male</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0009">Serial Port 16550A Compatible</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0802" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">SERIAL2</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0008" type="external">DB-9 male</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0009">Serial Port 16550A Compatible</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0803" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">KYBD</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x000f" type="external">PS/2</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x000d">Keyboard Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0804" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">MOUSE</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x000f" type="external">PS/2</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x000e">Mouse Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0805" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB1</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0806" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB2</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0807" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB3</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0808" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB4</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0809" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB5</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080a" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB6</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080b" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB7</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080c" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">USB8</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0012" type="external">Access Bus (USB)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x0010">USB</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080d" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">ENET</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x000b" type="external">RJ-45</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x001f">Network Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080e" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">MIC</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x001f" type="external">Mini Jack (headphones)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x001d">Audio Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x080f" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">LINE-OUT</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x001f" type="external">Mini Jack (headphones)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x001d">Audio Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0810" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">LINE-IN</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x001f" type="external">Mini Jack (headphones)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x001d">Audio Port</PortType>
+  </PortConnectorInfo>
+  <PortConnectorInfo dmispec="3.3.9" type="8" handle="0x0811" size="9">
+    <DMIdescription>Port Connector Information</DMIdescription>
+    <DesignatorRef type="internal">HP-OUT</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x0000" type="internal">None</Connector>
+    <DesignatorRef type="external">Not Specified</DesignatorRef>
+    <Connector dmispec="3.3.9.2" flags="0x001f" type="external">Mini Jack (headphones)</Connector>
+    <PortType dmispec="3.3.9.3" flags="0x001d">Audio Port</PortType>
+  </PortConnectorInfo>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0901" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT1</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x000a">x4</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x00a5">PCI Express</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0003">Available</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0001" flags2="0x0000" type="0x00a5" id="1" slottype="PCI Express"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0004" flags2="0x0001">
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0902" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT2</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x000d">x16</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x00a5">PCI Express</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0004">In Use</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0002" flags2="0x0000" type="0x00a5" id="2" slottype="PCI Express"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0004" flags2="0x0001">
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0903" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT3</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x000a">x4</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x00a5">PCI Express</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0003">Available</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0003" flags2="0x0000" type="0x00a5" id="3" slottype="PCI Express"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0004" flags2="0x0001">
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0904" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT4</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x0005">32-bit</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x0006">PCI</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0003">Available</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0004" flags2="0x0000" type="0x0006" id="4" slottype="PCI"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0006" flags2="0x0001">
+      <Characteristic index="1">5.0 V is provided</Characteristic>
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0905" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT5</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x0006">64-bit</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x0006">PCI</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0003">Available</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0005" flags2="0x0000" type="0x0006" id="5" slottype="PCI"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0006" flags2="0x0001">
+      <Characteristic index="1">5.0 V is provided</Characteristic>
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <SystemSlots dmispec="3.3.10" type="9" handle="0x0906" size="13">
+    <DMIdescription>System Slots</DMIdescription>
+    <Designation>SLOT6</Designation>
+    <SlotWidth dmispec="3.3.10.2" flags="0x0006">64-bit</SlotWidth>
+    <SlotType dmispec="3.3.10.1" flags="0x0006">PCI</SlotType>
+    <CurrentUsage dmispec="3.3.10.3" flags="0x0003">Available</CurrentUsage>
+    <SlotLength dmispec="3.3.10.4" flags="0x0004">Long</SlotLength>
+    <SlotID dmispec="3.3.10.5" flags1="0x0006" flags2="0x0000" type="0x0006" id="6" slottype="PCI"/>
+    <SlotCharacteristics dmispec="3.3.10.6" flags1="0x0006" flags2="0x0001">
+      <Characteristic index="1">5.0 V is provided</Characteristic>
+      <Characteristic index="2">3.3 V is provided</Characteristic>
+      <Characteristic index="8">PME signal is supported</Characteristic>
+    </SlotCharacteristics>
+  </SystemSlots>
+  <OnBoardDevicesInfo dmispec="3.3.11" type="10" handle="0x0a02" size="6">
+    <DMIdescription>On Board Devices Information</DMIdescription>
+    <dmi_on_board_devices dmispec="3.3.11">
+      <Device dmispec="3.3.11.1" flags="0x0005" Enabled="1">
+        <Type>Ethernet</Type>
+        <Description>Broadcom 5752 NetXtreme Gigabit Controller</Description>
+      </Device>
+    </dmi_on_board_devices>
+  </OnBoardDevicesInfo>
+  <OnBoardDevicesInfo dmispec="3.3.11" type="10" handle="0x0a03" size="6">
+    <DMIdescription>On Board Devices Information</DMIdescription>
+    <dmi_on_board_devices dmispec="3.3.11">
+      <Device dmispec="3.3.11.1" flags="0x0007" Enabled="1">
+        <Type>Sound</Type>
+        <Description>Intel(R) High Definition Audio Controller</Description>
+      </Device>
+    </dmi_on_board_devices>
+  </OnBoardDevicesInfo>
+  <OEMstrings dmispec="3.3.12" type="11" count="1" handle="0x0b00" size="5">
+    <DMIdescription>OEM Strings</DMIdescription>
+    <Record index="1">www.dell.com</Record>
+  </OEMstrings>
+  <DMImessage type="12" notfound="1">DMI/SMBIOS type 0x0C is not found on this hardware</DMImessage>
+  <BIOSlanguage dmispec="3.3.14" type="13" installable_languages="1" handle="0x0d00" size="22">
+    <DMIdescription>BIOS Language Information</DMIdescription>
+    <Installed dmispec="3.3.14" count="1">
+      <Language index="1">en|US|iso8859-1</Language>
+    </Installed>
+  </BIOSlanguage>
+  <DMImessage type="14" notfound="1">DMI/SMBIOS type 0x0E is not found on this hardware</DMImessage>
+  <SysEventLog dmispec="3.3.16" type="15" handle="0x0f00" size="31">
+    <DMIdescription>System Event Log</DMIdescription>
+    <Status dmispec="3.3.16" flags="0x0001" Full="Not Full" Valid="Valid"/>
+    <Access AreaLength="2049">
+      <AccessMethod dmispec="3.3.16" flags="0x0003">Memory-mapped physical 32-bit address</AccessMethod>
+      <Address dmispec="3.3.16.3" method="0x0003" Data="0xfff01000"/>
+      <Header>
+        <OffsetStart>0x0000</OffsetStart>
+        <Length>16</Length>
+        <DataOffset>0x0010</DataOffset>
+        <ChangeToken>0x00000012</ChangeToken>
+        <Format dmispec="3.3.16" flags="0x0001">Type 1</Format>
+      </Header>
+    </Access>
+    <LogTypes count="4" length="2" dmispec="3.3.16.1">
+      <LogType>
+        <Descriptor dmispec="3.3.16.6.1" flags="0x0008">POST error</Descriptor>
+        <Format dmispec="3.3.16.6.2" flags="0x0004">POST results bitmap</Format>
+      </LogType>
+      <LogType>
+        <Descriptor dmispec="3.3.16.6.1" flags="0x0010">System limit exceeded</Descriptor>
+        <Format dmispec="3.3.16.6.2" flags="0x0005">System management</Format>
+      </LogType>
+      <LogType>
+        <Descriptor dmispec="3.3.16.6.1" flags="0x0016">Log area reset/cleared</Descriptor>
+        <Format dmispec="3.3.16.6.2" flags="0x0000">None</Format>
+      </LogType>
+      <LogType>
+        <Descriptor dmispec="3.3.16.6.1" flags="0x0002">Multi-bit ECC memory error</Descriptor>
+        <Format dmispec="3.3.16.6.2" flags="0x0001">Handle</Format>
+      </LogType>
+    </LogTypes>
+  </SysEventLog>
+  <PhysicalMemoryArray dmispec="3.3.17" type="16" NumDevices="8" handle="0x1000" size="15">
+    <DMIdescription>Physical Memory Array</DMIdescription>
+    <Location dmispec="3.3.17.1" flags="0x0003">System Board Or Motherboard</Location>
+    <Use dmispec="3.3.17.2" flags="0x0003">System Memory</Use>
+    <ErrorCorrectionType dmispec="3.3.17.3" flags="0x0005">Single-bit ECC</ErrorCorrectionType>
+    <MaxCapacity flags="0x2000000" unit="GB">32</MaxCapacity>
+    <ErrorInfoHandle not_provided="1"/>
+  </PhysicalMemoryArray>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1100" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0400" unit="MB">1024</Size>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 1</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>80CE808980CE</Manufacturer>
+    <SerialNumber>100F93AA</SerialNumber>
+    <AssetTag>010726</AssetTag>
+    <PartNumber>M395T2953EZ4-CE65</PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1101" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0400" unit="MB">1024</Size>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 2</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>80CE808980CE</Manufacturer>
+    <SerialNumber>100F937D</SerialNumber>
+    <AssetTag>010726</AssetTag>
+    <PartNumber>M395T2953EZ4-CE65</PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1102" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 3</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1103" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 4</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1104" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 5</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1105" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 6</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1106" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 7</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <MemoryDevice dmispec="3.3.18" type="17" ArrayHandle="0x1000" handle="0x1107" size="27">
+    <DMIdescription>Memory Device</DMIdescription>
+    <ErrorInfoHandle no_error="1"/>
+    <TotalWidth unit="bit">72</TotalWidth>
+    <DataWidth unit="bit">64</DataWidth>
+    <Size flags="0x0000" empty="1"/>
+    <FormFactor dmispec="3.3.18.1" flags="0x000f">FB-DIMM</FormFactor>
+    <Set flags="0x0000"/>
+    <Locator>DIMM 8</Locator>
+    <BankLocator>Not Specified</BankLocator>
+    <Type dmispec="3.3.18.2" flags="0x0014">DDR2 FB-DIMM</Type>
+    <TypeDetails dmispec="3.3.18.3" flags="0x0080">
+      <flag index="7">Synchronous</flag>
+    </TypeDetails>
+    <Speed flags="0x029b" speed_ns="1.5" unit="MHz">667</Speed>
+    <Manufacturer>FFFFFFFFFFFF</Manufacturer>
+    <SerialNumber>FFFFFFFF</SerialNumber>
+    <AssetTag>FFFFFF</AssetTag>
+    <PartNumber></PartNumber>
+  </MemoryDevice>
+  <DMImessage type="18" notfound="1">DMI/SMBIOS type 0x12 is not found on this hardware</DMImessage>
+  <MemoryArrayMappedAddress dmispec="3.3.20" type="19" handle="0x1301" size="15">
+    <DMIdescription>Memory Array Mapped Address</DMIdescription>
+    <StartAddress>0x00000000000</StartAddress>
+    <EndAddress>0x0007fffffff</EndAddress>
+    <RangeSize dmispec="3.3.19.2" flags="0x200000" unit="GB">2</RangeSize>
+    <PhysicalArrayHandle>0x1000</PhysicalArrayHandle>
+    <PartitionWidth>0</PartitionWidth>
+  </MemoryArrayMappedAddress>
+  <MemoryDeviceMappedAddress dmispec="3.3.21" type="20" handle="0x1400" size="19">
+    <DMIdescription>Memory Device Mapped Address</DMIdescription>
+    <StartAddress>0x00000000000</StartAddress>
+    <EndAddress>0x0007fffffff</EndAddress>
+    <RangeSize dmispec="3.3.19.2" flags="0x200000" unit="GB">2</RangeSize>
+    <PhysicalDeviceHandle>0x1100</PhysicalDeviceHandle>
+    <MemArrayMappedAddrHandle>0x1301</MemArrayMappedAddrHandle>
+    <PartitionRowPosition>1</PartitionRowPosition>
+    <InterleavePosition>1</InterleavePosition>
+    <InterleaveDataDepth>2</InterleaveDataDepth>
+  </MemoryDeviceMappedAddress>
+  <MemoryDeviceMappedAddress dmispec="3.3.21" type="20" handle="0x1401" size="19">
+    <DMIdescription>Memory Device Mapped Address</DMIdescription>
+    <StartAddress>0x00000000000</StartAddress>
+    <EndAddress>0x0007fffffff</EndAddress>
+    <RangeSize dmispec="3.3.19.2" flags="0x200000" unit="GB">2</RangeSize>
+    <PhysicalDeviceHandle>0x1101</PhysicalDeviceHandle>
+    <MemArrayMappedAddrHandle>0x1301</MemArrayMappedAddrHandle>
+    <PartitionRowPosition>1</PartitionRowPosition>
+    <InterleavePosition>2</InterleavePosition>
+    <InterleaveDataDepth>2</InterleaveDataDepth>
+  </MemoryDeviceMappedAddress>
+  <DMImessage type="21" notfound="1">DMI/SMBIOS type 0x15 is not found on this hardware</DMImessage>
+  <DMImessage type="22" notfound="1">DMI/SMBIOS type 0x16 is not found on this hardware</DMImessage>
+  <DMImessage type="23" notfound="1">DMI/SMBIOS type 0x17 is not found on this hardware</DMImessage>
+  <HardwareSecurity dmispec="3.3.25" type="24" handle="0x1800" size="5">
+    <DMIdescription>Hardware Security</DMIdescription>
+    <PowerOnPassword flags="0x0001">Enabled</PowerOnPassword>
+    <KeyboardPassword flags="0x0002">Not Implemented</KeyboardPassword>
+    <AdministratorPassword flags="0x0001">Enabled</AdministratorPassword>
+    <FronPanelReset flags="0x0002">Not Implemented</FronPanelReset>
+  </HardwareSecurity>
+  <SystemPowerCtrls dmispec="3.3.26" type="25" handle="0x1900" size="9">
+    <DMIdescription>System Power Controls</DMIdescription>
+    <NextSchedPowerOn dmispec="3.3.26.1" flags="0x012ade6f">*-* *:*:*</NextSchedPowerOn>
+  </SystemPowerCtrls>
+  <Probe dmispec="3.3.27" type="26" probetype="Voltage" handle="0x1a00" size="20">
+    <DMIdescription>Voltage Probe</DMIdescription>
+    <Description>CPU0 Voltage</Description>
+    <Location dmispec="3.3.27.1" flags="0x0007">Motherboard</Location>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <MaxValue flags="0x0cf8" unit="V">3.320</MaxValue>
+    <MinValue flags="0x0000" unit="V">0.000</MinValue>
+    <Resolution flags="0x004e" unit="mV">7.8</Resolution>
+    <Tolerance flags="0x8000" unknown="1"/>
+    <Accuracy flags="0x00c8" unit="%">2.00</Accuracy>
+    <OEMinformation>0x0000dc00</OEMinformation>
+  </Probe>
+  <Probe dmispec="3.3.27" type="26" probetype="Voltage" handle="0x1a02" size="20">
+    <DMIdescription>Voltage Probe</DMIdescription>
+    <Description>+VTT</Description>
+    <Location dmispec="3.3.27.1" flags="0x0007">Motherboard</Location>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <MaxValue flags="0x07c6" unit="V">1.990</MaxValue>
+    <MinValue flags="0x0000" unit="V">0.000</MinValue>
+    <Resolution flags="0x004e" unit="mV">7.8</Resolution>
+    <Tolerance flags="0x8000" unknown="1"/>
+    <Accuracy flags="0x00c8" unit="%">2.00</Accuracy>
+    <OEMinformation>0x0000dc02</OEMinformation>
+  </Probe>
+  <Probe dmispec="3.3.27" type="26" probetype="Voltage" handle="0x1a04" size="20">
+    <DMIdescription>Voltage Probe</DMIdescription>
+    <Description>+VCC</Description>
+    <Location dmispec="3.3.27.1" flags="0x0007">Motherboard</Location>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <MaxValue flags="0x19f0" unit="V">6.640</MaxValue>
+    <MinValue flags="0x0000" unit="V">0.000</MinValue>
+    <Resolution flags="0x00ab" unit="mV">17.1</Resolution>
+    <Tolerance flags="0x8000" unknown="1"/>
+    <Accuracy flags="0x00c8" unit="%">2.00</Accuracy>
+    <OEMinformation>0x0000dc04</OEMinformation>
+  </Probe>
+  <CoolingDevice dmispec="3.3.28" type="27" handle="0x1b00" size="12">
+    <DMIdescription>Cooling Device</DMIdescription>
+    <Type dmispec="3.3.28.1" flags="0x0003">Fan</Type>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <OEMinformation>0x00000000</OEMinformation>
+  </CoolingDevice>
+  <CoolingDevice dmispec="3.3.28" type="27" handle="0x1b10" size="12">
+    <DMIdescription>Cooling Device</DMIdescription>
+    <Type dmispec="3.3.28.1" flags="0x0003">Fan</Type>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <OEMinformation>0x0000dd00</OEMinformation>
+  </CoolingDevice>
+  <CoolingDevice dmispec="3.3.28" type="27" handle="0x1b11" size="12">
+    <DMIdescription>Cooling Device</DMIdescription>
+    <Type dmispec="3.3.28.1" flags="0x0003">Fan</Type>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <OEMinformation>0x0000dd01</OEMinformation>
+  </CoolingDevice>
+  <CoolingDevice dmispec="3.3.28" type="27" handle="0x1b12" size="12">
+    <DMIdescription>Cooling Device</DMIdescription>
+    <Type dmispec="3.3.28.1" flags="0x0003">Fan</Type>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <OEMinformation>0x0000dd02</OEMinformation>
+  </CoolingDevice>
+  <Probe dmispec="3.3.29" type="28" probetype="Temperature" handle="0x1c00" size="20">
+    <DMIdescription>Temperature Probe</DMIdescription>
+    <Description>CPU0</Description>
+    <Location dmispec="3.3.29.1" flags="0x0003">Processor</Location>
+    <Status dmispec="3.3.27.1" flags="0x0003">OK</Status>
+    <MaxValue flags="0x04f6" unit="C">127.0</MaxValue>
+    <MinValue flags="0xfb0a" unit="C">-127.0</MinValue>
+    <Resolution flags="0x03e8" unit="C">1.000</Resolution>
+    <Tolerance flags="0x8000" unknown="1"/>
+    <Accuracy flags="0x8000" unknown="1"/>
+    <OEMinformation>0x0000dc11</OEMinformation>
+  </Probe>
+  <DMImessage type="29" notfound="1">DMI/SMBIOS type 0x1D is not found on this hardware</DMImessage>
+  <DMImessage type="30" notfound="1">DMI/SMBIOS type 0x1E is not found on this hardware</DMImessage>
+  <DMImessage type="31" notfound="1">DMI/SMBIOS type 0x1F is not found on this hardware</DMImessage>
+  <SystemBootInfo dmispec="3.3.33" type="32" handle="0x2000" size="11">
+    <DMIdescription>System Boot Information</DMIdescription>
+    <Status flags="0x0000">No errors detected</Status>
+  </SystemBootInfo>
+  <DMImessage type="33" notfound="1">DMI/SMBIOS type 0x21 is not found on this hardware</DMImessage>
+  <DMImessage type="34" notfound="1">DMI/SMBIOS type 0x22 is not found on this hardware</DMImessage>
+  <DMImessage type="35" notfound="1">DMI/SMBIOS type 0x23 is not found on this hardware</DMImessage>
+  <DMImessage type="36" notfound="1">DMI/SMBIOS type 0x24 is not found on this hardware</DMImessage>
+  <DMImessage type="37" notfound="1">DMI/SMBIOS type 0x25 is not found on this hardware</DMImessage>
+  <DMImessage type="38" notfound="1">DMI/SMBIOS type 0x26 is not found on this hardware</DMImessage>
+  <DMImessage type="39" notfound="1">DMI/SMBIOS type 0x27 is not found on this hardware</DMImessage>
+  <DMImessage type="40" notfound="1">DMI/SMBIOS type 0x28 is not found on this hardware</DMImessage>
+  <DMImessage type="41" notfound="1">DMI/SMBIOS type 0x29 is not found on this hardware</DMImessage>
+</dmidecode>

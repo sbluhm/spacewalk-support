@@ -1,0 +1,4 @@
+#!/usr/libexec/platform-python -s
+from pylint import run_pyreverse
+
+run_pyreverse()
