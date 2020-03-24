@@ -1,4 +1,4 @@
-export VERSION=2.10.26
+export VERSION=2.11.2
 export RELEASE=1
 export SHORTNAME=backend
 export LOCATION=~/spacewalk
