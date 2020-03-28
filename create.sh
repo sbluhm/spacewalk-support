@@ -1,2 +1,6 @@
-createrepo --update --workers=4 /var/www/html/packages/
+createrepo --update --workers=4 .
+git add *
+git add repodata/*
+git commit
+git push
 dnf clean all
