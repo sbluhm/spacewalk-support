@@ -1,0 +1,28 @@
+From 65068a2632e51701d8dc97fc2e6d29086749b79a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Mon, 18 Jun 2018 17:09:53 +0200
+Subject: [PATCH] Only use @pytest.fixture decorator once per fixture
+
+This is now required in pytest >= 3.6
+
+We define our own autoused fixtue not to change the API
+
+See https://github.com/pytest-dev/pytest/issues/3518
+
+Fixes https://github.com/kevin1024/pytest-httpbin/issues/49
+---
+ tests/conftest.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 0d5df6d..710bd5e 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -3,4 +3,6 @@
+ from pytest_httpbin.plugin import httpbin_ca_bundle
+ 
+ 
+-pytest.fixture(autouse=True)(httpbin_ca_bundle)
++@pytest.fixture(autouse=True, scope='function')
++def httpbin_ca_bundle_autoused(httpbin_ca_bundle):
++    pass
