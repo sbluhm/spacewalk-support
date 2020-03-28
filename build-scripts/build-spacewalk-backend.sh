@@ -1,7 +1,7 @@
 export VERSION=2.11.2
 export RELEASE=1
 export SHORTNAME=backend
-export LOCATION=~/spacewalk
+export LOCATION=~/git/spacewalk
 rm -Rf ${LOCATION}/spacewalk-${SHORTNAME}-${VERSION}
 cp -R ${LOCATION}/${SHORTNAME} ${LOCATION}/spacewalk-${SHORTNAME}-${VERSION}
 rm -f ~/rpmbuild/SOURCES/spacewalk-${SHORTNAME}-${VERSION}.tar.gz;
