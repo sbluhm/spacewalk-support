@@ -2,10 +2,9 @@ echo "Usage: $0 specfile tag build version"
 SPECFILE=`realpath -e $1`
 export SHORTNAME=`sed -n 's/^Name://p' $1 | sed 's/[ \t]//g'`
 export VERSION=`sed -n 's/^Version://p' $1 | sed 's/[ \t]//g'`
-export RELEASE=`sed -n 's/^Release://p' $1 | sed 's/[ \t]//g'` |  sed 's/%.*//'
+export RELEASE=`sed -n 's/^Release://p' $1 | sed 's/[ \t]//g' |  sed 's/%.*//'`
 
 echo "Processing tag ${SHORTNAME}-${VERSION}-${RELEASE}"
-#export VERSION=$4
 
 TAG=false
 BUILD=false
@@ -20,17 +19,18 @@ then
         BUILD=true
 fi
 
-#export LOCATION=/root/spacewalk/projects
-
+export LOCATION=`dirname $SPECFILE`
+export SHORTNAME=`basename $LOCATION`
 if $BUILD
 then
-	rm -Rf ${LOCATION}/{SHORTNAME}-${VERSION}
-	cp -R ${LOCATION}/${SHORTNAME} ${LOCATION}/${SHORTNAME}-${VERSION}
+	rm -Rf ${LOCATION}-${VERSION}
+	cp -R ${LOCATION} ${LOCATION}-${VERSION}
 	rm -f ~/rpmbuild/SOURCES/${SHORTNAME}-${VERSION}.tar.gz;
 	cd ${LOCATION}
+        cd ..
 	tar cf ~/rpmbuild/SOURCES/${SHORTNAME}-${VERSION}.tar.gz ${SHORTNAME}-${VERSION}
-	rm -Rf ${LOCATION}/${SHORTNAME}-${VERSION}
-	rpmbuild -ba ${LOCATION}/${SHORTNAME}/${SHORTNAME}.spec
+	rm -Rf ${LOCATION}-${VERSION}
+	rpmbuild -ba $SPECFILE
 #cd ~/spacewalk
 fi
 
