@@ -31,7 +31,7 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n jansi-jansi-project-%{version}
 
-%pom_disable_module example
+#%pom_disable_module example
 %pom_xpath_remove "pom:build/pom:extensions"
 
 %pom_remove_plugin -r :maven-site-plugin
@@ -44,8 +44,8 @@ pushd jansi
 %pom_remove_dep :jansi-windows32
 %pom_remove_dep :jansi-windows64
 %pom_remove_dep :jansi-osx
-%pom_remove_dep :jansi-freebsd32
-%pom_remove_dep :jansi-freebsd64
+#%pom_remove_dep :jansi-freebsd32
+#%pom_remove_dep :jansi-freebsd64
 # it's there only to be bundled in uberjar and we disable uberjar generation
 %pom_remove_dep :jansi-linux32
 %pom_remove_dep :jansi-linux64
@@ -55,7 +55,8 @@ popd
 %pom_remove_plugin -r :maven-javadoc-plugin
 
 %build
-%mvn_build
+%define xmvn_bootstrap true
+%mvn_build 
 
 %install
 %mvn_install
