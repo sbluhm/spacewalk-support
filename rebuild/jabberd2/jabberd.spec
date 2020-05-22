@@ -22,7 +22,7 @@ BuildRequires:  perl-generators
 BuildRequires:  cppunit-devel
 BuildRequires:          systemd-units
 BuildRequires:  zlib-devel
-BuildRequires:  libdb4-devel
+BuildRequires:  libdb-devel
 
 Requires(post):         systemd-units systemd-sysv
 Requires(preun):        systemd-units
