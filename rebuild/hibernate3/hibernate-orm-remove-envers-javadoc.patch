@@ -1,0 +1,30 @@
+diff -urN hibernate-orm-3.6.10.Final.orig/hibernate-envers/pom.xml hibernate-orm-3.6.10.Final/hibernate-envers/pom.xml
+--- hibernate-orm-3.6.10.Final.orig/hibernate-envers/pom.xml	2020-05-21 20:21:15.649508589 +0200
++++ hibernate-orm-3.6.10.Final/hibernate-envers/pom.xml	2020-05-21 20:21:44.914632789 +0200
+@@ -63,26 +63,6 @@
+                 </configuration>
+             </plugin>
+ 
+-            <!-- javadocs : we want these run in the 'package' lifecycle phase-->
+-            <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-javadoc-plugin</artifactId>
+-                <executions>
+-                    <execution>
+-                        <phase>package</phase>
+-                        <goals>
+-                            <goal>javadoc</goal>
+-                        </goals>
+-                        <configuration>
+-                            <aggregate>${jbossenvers.reports.aggregate}</aggregate>
+-                            <links>
+-                                <link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+-                                <link>http://java.sun.com/javaee/5/docs/api/</link>
+-                            </links>
+-                        </configuration>
+-                    </execution>
+-                </executions>
+-            </plugin>
+         </plugins>
+     </build>
+ 
