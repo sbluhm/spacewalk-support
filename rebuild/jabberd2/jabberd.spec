@@ -21,6 +21,7 @@ BuildRequires:  openssl-devel libidn-devel expat-devel
 BuildRequires:  perl-generators
 BuildRequires:  cppunit-devel
 BuildRequires:          systemd-units
+BuildRequires:  zlib-devel
 Requires(post):         systemd-units systemd-sysv
 Requires(preun):        systemd-units
 Requires(postun):       systemd-units
