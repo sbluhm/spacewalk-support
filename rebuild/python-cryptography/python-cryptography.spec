@@ -23,7 +23,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
 BuildRequires:  python2-devel
-BuildRequires:  pytest
+BuildRequires:  python2-pytest
 BuildRequires:  python2-setuptools
 BuildRequires:  python-pretend
 BuildRequires:  python2-iso8601
