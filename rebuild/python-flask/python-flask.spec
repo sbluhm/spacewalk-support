@@ -126,10 +126,10 @@ ln -sf %{modname}-3 %{buildroot}%{_bindir}/%{modname}
 
 %check
 export LC_ALL=C.UTF-8
-%if %{with python2}
-PYTHONPATH=%{buildroot}%{python2_sitelib} py.test-%{python2_version} -v
-%endif # with python2
-PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_version} -v || :
+#%if %{with python2}
+#PYTHONPATH=%{buildroot}%{python2_sitelib} py.test-%{python2_version} -v
+#%endif # with python2
+#PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_version} -v || :
 
 %if %{with python2}
 %files -n python2-%{modname}
