@@ -7,7 +7,7 @@ rpm2cpio *.src.rpm | cpio -idmv --no-absolute-filenames
 dnf builddep *.spec
 \cp * ~/rpmbuild/SOURCES/; rpmbuild --undefine=_disable_source_fetch -ba *.spec
 
-rpmbuild -ba *.spec
+rpmbuild --undefine=_disable_source_fetch -ba *.spec
 
 
 dnf builddep *.src.rpm 
