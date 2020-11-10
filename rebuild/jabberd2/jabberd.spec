@@ -236,15 +236,6 @@ END
 
 fi
 
-#create ssl certificate
-cd %{_sysconfdir}/%{name}
-if [ ! -s server.pem ]; then
- %{___build_shell} %{_sysconfdir}/pki/tls/certs/make-dummy-cert server.pem
- chown root.jabber server.pem
- chmod 640 server.pem
-fi
-%endif
-
 %preun
 %systemd_preun %{name}.service
 
