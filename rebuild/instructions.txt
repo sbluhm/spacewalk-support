@@ -1,9 +1,0 @@
-This file contains instructions on how to build specific packages for EPEL8 with focus on copr
-
-python2-isort
-    enable modules python27:2.7, python36:3.6
-    dnf -y install python2-pluggy python3-pluggy
-    copr: Enable internet connection
-
-python3-isort
-    see python2-isort
