@@ -1,4 +1,0 @@
-%dir /usr/lib/debug
-%dir /usr/lib/debug/usr
-%dir /usr/lib/debug/usr/lib
-/usr/lib/debug/usr/lib/libjpam.so-0.4-39.el8.x86_64.debug

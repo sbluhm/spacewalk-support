@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra"><info organisation="org.scala-lang" module="scala-library" revision="2.10.6" status="release" publication="20200229210156"> </info><configurations><conf name="default"/><conf name="provided"/><conf name="test"/></configurations><publications><artifact name="scala-library" type="jar"/></publications></ivy-module>

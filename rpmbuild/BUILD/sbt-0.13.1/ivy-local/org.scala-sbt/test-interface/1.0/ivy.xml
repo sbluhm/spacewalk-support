@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='us-ascii'?>
-<ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra"><info module="test-interface" organisation="org.scala-sbt" revision="1.0" status="release"> </info><configurations><conf name="default" /><conf name="provided" /><conf name="test" /></configurations><publications><artifact name="test-interface" type="jar" /></publications></ivy-module>

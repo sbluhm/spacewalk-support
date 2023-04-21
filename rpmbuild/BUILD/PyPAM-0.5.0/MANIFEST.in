@@ -1,3 +1,0 @@
-include AUTHORS ChangeLog COPYING INSTALL README NEWS
-recursive-include examples pam*
-recursive-include tests *.py

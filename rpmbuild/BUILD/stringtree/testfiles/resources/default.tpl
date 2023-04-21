@@ -1,1 +1,0 @@
-Got action '[ACTION]' for item [ID] of type '[TYPE]'

@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='us-ascii'?>
-<ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra"><info module="proguard-base" organisation="net.sf.proguard" revision="4.8" status="release"> </info><configurations><conf name="default" /><conf name="provided" /><conf name="test" /></configurations><publications><artifact name="proguard-base" type="jar" /></publications></ivy-module>

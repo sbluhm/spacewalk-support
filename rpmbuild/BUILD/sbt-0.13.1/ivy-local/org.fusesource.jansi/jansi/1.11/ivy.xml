@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='us-ascii'?>
-<ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra"><info module="jansi" organisation="org.fusesource.jansi" revision="1.11" status="release"> </info><configurations><conf name="default" /><conf name="provided" /><conf name="test" /></configurations><publications><artifact name="jansi" type="jar" /></publications><dependencies><dependency name="hawtjni-runtime" org="org.fusesource.hawtjni" rev="1.16" /><dependency name="jansi-native" org="org.fusesource.jansi" rev="1.8" /></dependencies></ivy-module>

@@ -1,8 +1,0 @@
-Test-Command: pyflakes --help
-Depends: pyflakes
-
-Test-Command: pyflakes3 --help
-Depends: pyflakes3
-
-Tests: relative-import.sh
-Depends: python-pyflakes, python3-pyflakes

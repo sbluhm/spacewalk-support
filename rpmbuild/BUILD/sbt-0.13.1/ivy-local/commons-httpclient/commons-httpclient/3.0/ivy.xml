@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='us-ascii'?>
-<ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra"><info module="commons-httpclient" organisation="commons-httpclient" revision="3.0" status="release"> </info><configurations><conf name="default" /><conf name="provided" /><conf name="test" /></configurations><publications><artifact name="commons-httpclient" type="jar" /></publications><dependencies><dependency name="commons-logging" org="commons-logging" rev="1.0.4" /><dependency name="commons-codec" org="commons-codec" rev="1.2" /></dependencies></ivy-module>

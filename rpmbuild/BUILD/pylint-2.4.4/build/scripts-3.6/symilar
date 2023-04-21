@@ -1,4 +1,0 @@
-#!/usr/libexec/platform-python -s
-from pylint import run_symilar
-
-run_symilar()

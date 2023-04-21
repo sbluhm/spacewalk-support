@@ -1,2 +1,0 @@
-include common_setup.py *.md VERSION LICENSE
-recursive-include tests *

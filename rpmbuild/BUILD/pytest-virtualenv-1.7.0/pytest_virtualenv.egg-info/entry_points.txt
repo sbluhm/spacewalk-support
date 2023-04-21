@@ -1,3 +1,0 @@
-[pytest11]
-virtualenv = pytest_virtualenv
-
